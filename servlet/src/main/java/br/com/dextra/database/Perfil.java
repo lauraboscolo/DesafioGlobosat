@@ -2,8 +2,10 @@ package br.com.dextra.database;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +26,10 @@ public class Perfil implements java.io.Serializable {
 	@Column(nullable = false, name = "nome")
 	private String nome;
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "perfis_assuntos",
-	joinColumns = { @JoinColumn(name = "id_perfil", referencedColumnName = "id") },
-	inverseJoinColumns = { @JoinColumn(name = "id_assunto", referencedColumnName = "id") })
+	joinColumns = { @JoinColumn(name = "id_perfil") },
+	inverseJoinColumns = { @JoinColumn(name = "id_assunto") })
 	private List<Assunto> assuntos;
 
 	public Perfil(int id,String descricao) {

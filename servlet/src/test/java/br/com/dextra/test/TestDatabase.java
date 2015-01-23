@@ -20,7 +20,7 @@ public class TestDatabase {
 		EntityManager em = emf.createEntityManager();
 		
 		AssuntoDao assuntos = new AssuntoDao(em);
-		Assert.assertNotEquals(assuntos.getAssunto(1).getIdAssunto(),1);
+		Assert.assertNotEquals(assuntos.getAssunto(1).getIdAssunto(),0);
 		
 		em.close();
 		emf.close();
@@ -34,7 +34,7 @@ public class TestDatabase {
 		PerfilDao perfilAssunto = new PerfilDao(em);
 		
 		// idperfil = 1 ; correto = {1,7}
-		Assert.assertNotNull(perfilAssunto.getPerfilAssuntoResolvendoLazy(1));
+		Assert.assertNotNull(perfilAssunto.getPerfilAssuntoResolvendoLazy(1).getAssuntos());
 		
 		em.close();
 		emf.close();
