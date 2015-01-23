@@ -14,32 +14,36 @@
 		gerenciaNoticias.listar();
 	});
 </script>
+
 <title>Site de notícias</title>
 </head>
 
 <body>
-	<div class="navbar navbar-inverse navbar-static-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">Site de notícias</a>
-			<div class="navbar-header">
+	<div class="navbar-wrapper ">
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Site de notícias</a>
+				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
 					</ul>
 				</div>
 			</div>
-		</div>
+
+		</nav>
+
 	</div>
 
-	<div id="carousel-example-generic" class="carousel slide"
+	<div class="carousel slide"
 		data-ride="carousel" data-interval=3000>
-		<!-- Indicators -->FundoPreto
 		<ol class="carousel-indicators">
 			<li data-target="#carousel-example-generic" data-slide-to="0"
 				class="active"></li>
 			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		</ol>
+ 			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+ 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
@@ -66,12 +70,18 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-
-	<div class="noticias">
-		
+	<div class="container marketing">
+		<div class="noticias"></div>
+		<footer>
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>
+				© 2014 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a>
+			</p>
+		</footer>
 	</div>
 
-	<div class="footer"></div>
 </body>
 </html>
 

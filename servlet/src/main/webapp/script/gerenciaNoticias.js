@@ -1,7 +1,11 @@
 gerenciaNoticias = {
 	listar : function() {
 		$.when($.getJSON('WEB-INF/test_doT.json'),
-				$.get('pages/templatenoticia.html')).done(
+				$.ajax({
+					  url:'pages/templatenoticia.html',
+					  type: "GET",
+					  dataType: 'html',
+					})).done(
 				function(resultadoDados, resultadoTemplate) {
 
 					for (index = 0; index < resultadoDados.length; ++index) {
