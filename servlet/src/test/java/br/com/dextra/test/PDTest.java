@@ -11,7 +11,6 @@ import weka.core.Instance;
 import weka.core.Instances;
 import br.com.dextra.WEKA.PD;
 
-import com.sun.xml.internal.ws.policy.spi.AssertionCreationException;
 
 
 public class PDTest {
@@ -86,6 +85,7 @@ public class PDTest {
 		}
 	}
 	
+
 	
 
 }
