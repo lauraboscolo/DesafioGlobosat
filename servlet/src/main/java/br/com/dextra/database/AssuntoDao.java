@@ -1,22 +1,13 @@
 package br.com.dextra.database;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 public class AssuntoDao {
 
-	private EntityManagerFactory emf;
 	private EntityManager em;
 	
-	public AssuntoDao(){
-		emf = Persistence.createEntityManagerFactory("DesafioGlobosat");
-		em = emf.createEntityManager();
+	public AssuntoDao(EntityManager em) {
+		this.em = em;
 	}
 	
 	public boolean addAssunto(String assunto){
@@ -63,9 +54,10 @@ public class AssuntoDao {
 		Assunto n = getAssunto(idAssunto);
 		n.setIdAssunto(idAssunto);
 		n.setLink(link);
-		n.setAssunto(Assunto);	
+		n.setAssunto(Assunto);
+		em.merge(n); **Lura adicionou esse treco - temos que testar**
 		**/
 		return false;
 	} 
-
+	
 }

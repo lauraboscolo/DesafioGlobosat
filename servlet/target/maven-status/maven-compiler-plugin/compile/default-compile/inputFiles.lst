@@ -1,3 +1,6 @@
 /home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticias.java
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/NoticiaDao.java
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Assunto.java
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticia.java
 /home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/AssuntoDao.java

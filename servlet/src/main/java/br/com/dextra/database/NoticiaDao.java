@@ -1,22 +1,13 @@
 package br.com.dextra.database;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 public class NoticiaDao {
 
-	private EntityManagerFactory emf;
 	private EntityManager em;
 	
-	public NoticiaDao(){
-		emf = Persistence.createEntityManagerFactory("DesafioGlobosat");
-		em = emf.createEntityManager();
+	public NoticiaDao(EntityManager em) {
+		this.em = em;
 	}
 	
 	public boolean addNoticia(int idAssunto,String noticia,String link){
@@ -40,7 +31,7 @@ public class NoticiaDao {
 	public Noticia getNoticia(int idNoticia){
 		return em.find(Noticia.class, idNoticia);
 	}
-
+	
 	public Noticia removeNoticia(int idNoticia){
 		em.getTransaction().begin();
 		try{
@@ -63,7 +54,8 @@ public class NoticiaDao {
 		Noticia n = getNoticia(idNoticia);
 		n.setIdAssunto(idAssunto);
 		n.setLink(link);
-		n.setNoticia(noticia);	
+		n.setNoticia(noticia);
+		em.merge(n); *testar*	
 		**/
 		return false;
 	} 

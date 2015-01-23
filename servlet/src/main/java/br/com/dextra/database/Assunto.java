@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity(name="assuntos")
 public class Assunto {
 
@@ -18,6 +17,10 @@ public class Assunto {
 	@Column(nullable=false,name="assunto")
 	private String assunto;
 	
+	public Assunto() {
+		this.assunto="";
+		this.idAssunto=-1;
+	}
 	public Assunto(String assunto){
 		if (assunto.isEmpty() || assunto == null)
 			throw new IllegalArgumentException("Campo Assunto Vazio");
