@@ -25,6 +25,7 @@ public class Assunto {
 		if (assunto.isEmpty() || assunto == null)
 			throw new IllegalArgumentException("Campo Assunto Vazio");
 		this.assunto = assunto;
+		this.idAssunto = -1;
 	}
 
 	public int getIdAssunto() {

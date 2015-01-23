@@ -10,32 +10,31 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.dextra.database.AssuntoDao;
+import br.com.dextra.database.PerfilDao;
 
 public class TestDatabase {
 	
 	@Test
-	public void testInsercaoAssunto() throws SQLException {
-		
-//		String url = "jdbc:postgresql://dbserver:5443/desafio_globosat";
-//		Properties props = new Properties();
-//		props.setProperty("user", "desafio_globosat");
-//		props.setProperty("password", "desafio321");
-//		//props.setProperty("ssl", "false");
-//		Connection conn = DriverManager.getConnection(url, props);
-//		
-//		Statement stmt = conn.createStatement();
-//		
-//		ResultSet query = stmt.executeQuery("select noticia from noticias");
-//		
-//		while (query.next()) {
-//			System.out.println(query.getString(1));
-//		}
-		
+	public void testPesquisaDeAssunto() throws SQLException {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("globosat");
 		EntityManager em = emf.createEntityManager();
 		
 		AssuntoDao assuntos = new AssuntoDao(em);
-		System.out.println(assuntos.getAssunto(1).getAssunto());
+		Assert.assertNotEquals(assuntos.getAssunto(1).getIdAssunto(),1);
+		
+		em.close();
+		emf.close();
+	}
+
+	@Test
+	public void testPesquisaDeAssuntoComIdPerfil() throws SQLException {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("globosat");
+		EntityManager em = emf.createEntityManager();
+		
+		PerfilDao perfilAssunto = new PerfilDao(em);
+		
+		// idperfil = 1 ; correto = {1,7}
+		Assert.assertNotNull(perfilAssunto.getPerfilAssuntoResolvendoLazy(1));
 		
 		em.close();
 		emf.close();
