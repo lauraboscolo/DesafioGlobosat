@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import weka.classifiers.functions.MultilayerPerceptron;
 import weka.core.Instances;
+
 public class PD {
+
 	//CONSTANTES
 	private boolean AUTO_BUILD = true;
 	private double LEARN_RATE = 0.3;
@@ -95,6 +97,7 @@ public class PD {
 			e.printStackTrace();
 		}
 		return null;
+
 	}
 	
 }
