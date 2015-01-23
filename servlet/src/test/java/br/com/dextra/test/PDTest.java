@@ -86,10 +86,6 @@ public class PDTest {
 		}
 	}
 	
-	@Test
-	public void testcreateInstancia()
-	{
-		fail("nao implementei");
-	}
+	
 
 }
