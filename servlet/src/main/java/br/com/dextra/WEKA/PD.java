@@ -29,7 +29,7 @@ public class PD {
 	/**
 	 * Método que permite que a rede seja treinada de forma padrao utilizando do big_data
 	 * atual.
-	 * @throws Exception
+	 * @throws Exception falha na construcao do classificador
 	 */
 	public void treinar() throws Exception 
 	{
