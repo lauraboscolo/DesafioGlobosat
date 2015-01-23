@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.core.Instance;
 import weka.core.Instances;
 
 public class PD {
@@ -77,6 +78,56 @@ public class PD {
 		_mlp.buildClassifier(instancia);
 	}
 	
+	/**
+	 * 
+	 * @param instancia instancia que sera classificada pela rede
+	 * @return qual a classificacao que a rede atribui a instancia
+	 * @throws Exception caso exista erro na instancia
+	 */
+	public double classificacao(Instance instancia) throws Exception
+	{
+		return _mlp.classifyInstance(instancia);
+	}
+	
+	/**
+	 * Método que utiliza de um arquivo ARFF de teste para medir a precisao atual da rede
+	 * @param test_file_path caminho do arquivo de teste ARFF
+	 * @param class_index index do classificador dos dados do arquivo ARFF 
+	 * @return a precisao atual da rede
+	 * @throws IOException, Exception Caso nao seja possivel ler o arquivo teste ou exista um erro
+	 * de sintaxe do ARFF
+	 */
+	public double getPrecisao(String test_file_path) throws IOException, Exception
+	{
+		double precisao = 0;
+		
+		FileReader fl = new FileReader(test_file_path);
+		Instances instancias = new Instances(fl);
+		if(_classf == -1)
+		{
+			instancias.setClassIndex(instancias.numAttributes()-1);			
+		}else{
+			instancias.setClassIndex(_classf);
+		}
+		for (int i = 0; i < instancias.numInstances(); ++i) 
+		{
+			Instance instanciaAtual = instancias.get(i);
+			double classValue = instanciaAtual.classValue();
+			double classMLP = _mlp.classifyInstance(instanciaAtual);
+			if(classMLP == classValue)
+			{
+				++precisao;
+			}
+		}
+		return precisao/instancias.numInstances();
+		
+		
+	}
+	
+	
+	
+	
+	////////METODOS PRIVATE 
 	private Instances createInstancia()
 	{
 		try {
