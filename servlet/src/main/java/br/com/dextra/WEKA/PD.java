@@ -46,8 +46,7 @@ public class PD {
 	 */
 	public void treinar() throws Exception 
 	{
-		Instances instancias = createInstancia();
-		
+		Instances instancias = createInstancia(_big_data_path);
 		_mlp = new MultilayerPerceptron();
 		_mlp.setAutoBuild(AUTO_BUILD);
 		_mlp.setLearningRate(LEARN_RATE);
@@ -65,7 +64,7 @@ public class PD {
 	 */
 	public void treinar(int training_time, double learn_rate, double momentum, String hidden_layers) throws Exception
 	{
-		Instances instancia = createInstancia();
+		Instances instancias = createInstancia(_big_data_path);
 		
 		_mlp = new MultilayerPerceptron();
 		_mlp.setAutoBuild(AUTO_BUILD);
@@ -75,7 +74,7 @@ public class PD {
 		_mlp.setHiddenLayers(hidden_layers);
 		
 		//treinando a rede
-		_mlp.buildClassifier(instancia);
+		_mlp.buildClassifier(instancias);
 	}
 	
 	/**
@@ -84,10 +83,11 @@ public class PD {
 	 * @return qual a classificacao que a rede atribui a instancia
 	 * @throws Exception caso exista erro na instancia
 	 */
-	public double classificacao(Instance instancia) throws Exception
+	public double classificacaoInt(Instance instancia) throws Exception
 	{
 		return _mlp.classifyInstance(instancia);
 	}
+	
 	
 	/**
 	 * Método que utiliza de um arquivo ARFF de teste para medir a precisao atual da rede
@@ -101,14 +101,8 @@ public class PD {
 	{
 		double precisao = 0;
 		
-		FileReader fl = new FileReader(test_file_path);
-		Instances instancias = new Instances(fl);
-		if(_classf == -1)
-		{
-			instancias.setClassIndex(instancias.numAttributes()-1);			
-		}else{
-			instancias.setClassIndex(_classf);
-		}
+		Instances instancias = createInstancia(test_file_path);
+		
 		for (int i = 0; i < instancias.numInstances(); ++i) 
 		{
 			Instance instanciaAtual = instancias.get(i);
@@ -128,12 +122,11 @@ public class PD {
 	
 	
 	////////METODOS PRIVATE 
-	private Instances createInstancia()
+	private Instances createInstancia(String path)
 	{
 		try {
-			FileReader fl = new FileReader(_big_data_path);
-			Instances instancias;
-			instancias = new Instances(fl);
+			FileReader fl = new FileReader(path);
+			Instances instancias = new Instances(fl);
 			//caso o classificador seja -1 está setado como padrao para o ultimo atributo
 			if(_classf == -1)
 			{
