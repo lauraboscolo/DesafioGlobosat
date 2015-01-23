@@ -17,12 +17,22 @@ public class PD {
 	//Var Globais
 	private String _big_data_path;
 	private MultilayerPerceptron _mlp;
+	private int _classf = -1;
 	
 	public PD(String big_data_path) throws FileNotFoundException
 	{
 		this._big_data_path = big_data_path;
 		//teste de existencia de arquivo
 		FileReader fl = new FileReader(_big_data_path);
+		
+	}
+	
+	public PD(String big_data_path, int classfier) throws FileNotFoundException
+	{
+		this._big_data_path = big_data_path;
+		//teste de existencia de arquivo
+		FileReader fl = new FileReader(_big_data_path);
+		this._classf = classfier;
 	}
 	
 	
@@ -33,8 +43,7 @@ public class PD {
 	 */
 	public void treinar() throws Exception 
 	{
-		FileReader fl = new FileReader(_big_data_path);
-		Instances instancia = new Instances(fl);
+		Instances instancias = createInstancia();
 		
 		_mlp = new MultilayerPerceptron();
 		_mlp.setAutoBuild(AUTO_BUILD);
@@ -44,7 +53,7 @@ public class PD {
 		_mlp.setHiddenLayers(HIDDEN_LAYERS);
 		
 		//treinando a rede
-		_mlp.buildClassifier(instancia);
+		_mlp.buildClassifier(instancias);
 	}
 	/**
 	 * Método que permite que a rede seja treinada de forma especificada utilizando do big_data
@@ -53,8 +62,7 @@ public class PD {
 	 */
 	public void treinar(int training_time, double learn_rate, double momentum, String hidden_layers) throws Exception
 	{
-		FileReader fl = new FileReader(_big_data_path);
-		Instances instancia = new Instances(fl);
+		Instances instancia = createInstancia();
 		
 		_mlp = new MultilayerPerceptron();
 		_mlp.setAutoBuild(AUTO_BUILD);
@@ -65,6 +73,28 @@ public class PD {
 		
 		//treinando a rede
 		_mlp.buildClassifier(instancia);
+	}
+	
+	private Instances createInstancia()
+	{
+		try {
+			FileReader fl = new FileReader(_big_data_path);
+			Instances instancias;
+			instancias = new Instances(fl);
+			//caso o classificador seja -1 está setado como padrao para o ultimo atributo
+			if(_classf == -1)
+			{
+				instancias.setClassIndex(instancias.numAttributes()-1);
+			} else 
+			{
+				instancias.setClassIndex(_classf);
+			}
+			return instancias;
+		} catch (IOException e) {
+			System.err.println("Erro na leitura do arquivo");
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
