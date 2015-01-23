@@ -113,9 +113,7 @@ public class PD {
 				++precisao;
 			}
 		}
-		return precisao/instancias.numInstances();
-		
-		
+		return precisao/instancias.numInstances();	
 	}
 	
 	
