@@ -1,0 +1,20 @@
+[{"assunto":"Tecnologia",
+ "noticia":"Noticia 1 teste",
+ "link":"Link 1 teste"
+},
+{"assunto":"Animais",
+ "noticia":"Noticia 2 teste",
+ "link":"Link 2 teste"
+},
+{"assunto":"Exploração",
+ "noticia":"Noticia 3 teste",
+ "link":"Link 3 teste"
+},
+{"assunto":"Comida",
+ "noticia":"Noticia 4 teste",
+ "link":"Link 4 teste"
+},
+{"assunto":"Tecnologia",
+ "noticia":"Noticia 5 teste",
+ "link":"Link 5 teste"
+}]
