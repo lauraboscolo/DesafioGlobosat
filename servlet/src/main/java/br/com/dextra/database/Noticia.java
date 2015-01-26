@@ -2,9 +2,12 @@ package br.com.dextra.database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity(name="noticias")
@@ -17,16 +20,23 @@ public class Noticia {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idNoticia;
 	
+//	@ManyToOne
 	@Column(nullable=false,name="id_assunto")
 	private int idAssunto;
-	
-	@Column(nullable=false,name="noticia")
-	private String noticia;
 
 	@Column(nullable=false,name="link")
 	private String link;
 	
-	public Noticia(int idAssunto,String noticia,String link){
+	@Column(nullable=false,name="noticia")
+	private String noticia;
+	
+	public Noticia() {
+		this.idAssunto = -1;
+		this.noticia = "";
+		this.link = "";
+	}
+	
+	public Noticia(int idAssunto,String link,String noticia){
 		if (idAssunto < 0 )
 			throw new IllegalArgumentException("Campo 'idAssunto' é menor do que 0");
 			

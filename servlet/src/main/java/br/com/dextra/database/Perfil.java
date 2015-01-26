@@ -26,12 +26,16 @@ public class Perfil implements java.io.Serializable {
 	@Column(nullable = false, name = "nome")
 	private String nome;
 
-	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "perfis_assuntos",
 	joinColumns = { @JoinColumn(name = "id_perfil") },
 	inverseJoinColumns = { @JoinColumn(name = "id_assunto") })
 	private List<Assunto> assuntos;
 
+	public Perfil() {
+		this(-1, "");
+	}
+	
 	public Perfil(int id,String descricao) {
 		this.id = id;
 		this.nome = descricao;
