@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 /home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestNoticiasServlet.java
 /home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/PDTest.java
+=======
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestNoticiaServlet.java
+/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestDatabase.java
+>>>>>>> 4a8c32e7d04f93d4bd2846264825c9993da4739b
