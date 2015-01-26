@@ -45,6 +45,7 @@ public class NoticiasServlet extends HttpServlet {
 			double indexClassi = pd.classificacaoInt(instancia)+1;
 			writer.println("class: " + indexClassi);
 			writer.flush();
+
 			/////////////////////////////
 			//bancodedados(indexClassi);
 			////////////////////////////
