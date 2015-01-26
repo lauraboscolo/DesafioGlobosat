@@ -23,9 +23,18 @@ var array = [
 
 function visitor() {
 	var p = next();
-	$.post("noticias", {caracteristicas: JSON.stringify(p)}, function(data) {
-		$(".noticias").html(data);
-	});
+	var teste = {lema: "MODA", participacao: "0.3", idade: 32, carreira: "FOTOGRAFO", classe: "B"};
+	$.post("noticias", {caracteristicas: JSON.stringify(teste)}, function(data) {
+		
+		$.get("pages/templatenoticia.html", function(template){
+			for (index = 0; index < data.length; ++index) {
+					$(".noticias").append(
+							doT.template(template)(data[index]));
+					console.info("data: "+data[index]);
+					console.info("template: "+template);
+			}
+		}, "html");
+	},"json");
 }
 
 function next() {

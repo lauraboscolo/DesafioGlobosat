@@ -44,11 +44,12 @@ public class NoticiasServlet extends HttpServlet {
 		try {
 			pd.treinar();
 			double indexClassi = pd.classificacaoInt(instancia)+1;
-			writer.println("class: " + indexClassi);
-			writer.flush();
 			
 			Gerenciadora ger = new Gerenciadora();
-			ger.getNoticiasPersonalizadas(indexClassi);
+			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
+			
+			writer.println(jsonRetorno);
+			writer.flush();
 		} catch (Exception e) {
 			writer.println(e.getMessage());
 			writer.flush();
