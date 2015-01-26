@@ -33,7 +33,7 @@ public class NoticiasServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String caracteristicas = request.getParameter("caracteristicas").toString();
 		PrintWriter writer = response.getWriter();
-		
+
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
 		JsonObject jsonObject = element.getAsJsonObject();
@@ -44,9 +44,6 @@ public class NoticiasServlet extends HttpServlet {
 			pd.treinar();
 			double indexClassi = pd.classificacaoInt(instancia)+1;
 			writer.println("class: " + indexClassi);
-			writer.flush();
-			double p= pd.getPrecisao(BIG_DATA_TEST_PATH);
-			writer.println("precisao: " + p);
 			writer.flush();
 			/////////////////////////////
 			//bancodedados(indexClassi);
