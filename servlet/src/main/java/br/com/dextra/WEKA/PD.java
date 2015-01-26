@@ -1,7 +1,7 @@
 package br.com.dextra.WEKA;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-<<<<<<< HEAD
 import java.io.IOException;
 
 import weka.classifiers.functions.MultilayerPerceptron;

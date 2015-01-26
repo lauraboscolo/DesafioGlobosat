@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
-/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
-=======
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/NoticiaDao.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Assunto.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticia.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
-/home/bruno.goncalves/Documentos/DesafioGlobosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/AssuntoDao.java
->>>>>>> 4a8c32e7d04f93d4bd2846264825c9993da4739b
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Gerenciadora.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticia.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Perfil.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Assunto.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/NoticiaDao.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/AssuntoDao.java
+/home/joao.vendrame/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/PerfilDao.java
