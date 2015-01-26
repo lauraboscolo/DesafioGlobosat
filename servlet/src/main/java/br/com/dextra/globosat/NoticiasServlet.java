@@ -1,7 +1,10 @@
 package br.com.dextra.globosat;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -29,23 +32,50 @@ public class NoticiasServlet extends HttpServlet {
 	private String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
 	private String BIG_DATA_TEST_PATH = "src/main/resources/arfftest.arff";
 	
+	//variaveis
+	private PD _pd;
+	
 	private static final long serialVersionUID = 2395124688530916076L;
+	
+	public void init() throws ServletException {
+		try {
+			_pd = new PD(BIG_DATA_PATH);
+			_pd.treinar();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String caracteristicas = request.getParameter("caracteristicas").toString();
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		
 		PrintWriter writer = response.getWriter();
+
 
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
 		JsonObject jsonObject = element.getAsJsonObject();
 		
 		Instance instancia = createInstance(jsonObject.toString());
-		PD pd = new PD(BIG_DATA_PATH);
 		try {
-			pd.treinar();
-			double indexClassi = pd.classificacaoInt(instancia)+1;
+			
+			double indexClassi = _pd.classificacaoInt(instancia)+1;
 			
 			Gerenciadora ger = new Gerenciadora();
+			try {
+				System.out.println("PRECISAO: "+_pd.getPrecisao(BIG_DATA_TEST_PATH));
+			} catch (Exception e1) {
+				System.out.println(e1.getMessage());
+				e1.printStackTrace();
+			}
+			System.out.println("INSTANCIA: "+caracteristicas+"");
+			System.out.println("Servlet1: "+indexClassi+"");
+			System.out.println("Servlet2: "+(int)indexClassi+"");
 			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
 			
 			writer.println(jsonRetorno);
