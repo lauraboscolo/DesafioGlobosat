@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 
 public class Gerenciadora {
 	
@@ -41,6 +41,25 @@ public class Gerenciadora {
 		assuntosDePerfil = perfis.getPerfilAssuntoResolvendoLazy(idPerfil).getAssuntos();
 		
 		return null;
+	}
+	
+	/**
+	 * Método para gerar uma String json passando um array de noticias
+	 * @param noticias: array que sera gerado o json
+	 * 
+	 */
+	public String gerarJsonDeNoticias(List<Noticia>noticias){
+		Gson gson = new Gson();
+		
+		String result = "["; // inicio da string que representa um array no json
+		for (int i = 0; i < noticias.length(); i++) {
+			if (i == noticias.length() - 1)
+				result = result + gson.toJson(noticias.get(i) + ",");
+			else 
+				result = result + gson.toJson(noticias.get(i);
+		}
+		return result + "]"
+				
 	}
 	
 	public void close(){

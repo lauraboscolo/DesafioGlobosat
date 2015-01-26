@@ -39,5 +39,10 @@ public class TestDatabase {
 		em.close();
 		emf.close();
 	}
+	
+	@Test
+	public void testGerarJsonNoticias() {
+		
+	}
 
 }
