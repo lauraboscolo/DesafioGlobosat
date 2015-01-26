@@ -1,3 +1,4 @@
-/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/PDTest.java
-/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestDatabase.java
-/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestNoticiaServlet.java
+/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestDatabase.java
+/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestNoticiasServlet.java
+/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/TestNoticiaServlet.java
+/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/test/java/br/com/dextra/test/PDTest.java

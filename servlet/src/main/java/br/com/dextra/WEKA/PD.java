@@ -10,13 +10,6 @@ import weka.core.Instances;
 
 public class PD {
 
-	//CONSTANTES
-	private boolean AUTO_BUILD = true;
-	private double LEARN_RATE = 0.3;
-	private String HIDDEN_LAYERS = "5"; 
-	private int TRAINING_TIME = 1000; 
-	private double MOMENTUM = 0.2; 
-	
 	//Var Globais
 	private String _big_data_path;
 	private MultilayerPerceptron _mlp;
@@ -48,12 +41,7 @@ public class PD {
 	{
 		Instances instancias = createInstancia(_big_data_path);
 		_mlp = new MultilayerPerceptron();
-		_mlp.setAutoBuild(AUTO_BUILD);
-		_mlp.setLearningRate(LEARN_RATE);
-		_mlp.setMomentum(MOMENTUM);
-		_mlp.setTrainingTime(TRAINING_TIME);
-		_mlp.setHiddenLayers(HIDDEN_LAYERS);
-		
+		_mlp.setAutoBuild(true);		
 		//treinando a rede
 		_mlp.buildClassifier(instancias);
 	}
@@ -67,7 +55,6 @@ public class PD {
 		Instances instancias = createInstancia(_big_data_path);
 		
 		_mlp = new MultilayerPerceptron();
-		_mlp.setAutoBuild(AUTO_BUILD);
 		_mlp.setLearningRate(learn_rate);
 		_mlp.setMomentum(momentum);
 		_mlp.setTrainingTime(training_time);
@@ -113,9 +100,7 @@ public class PD {
 				++precisao;
 			}
 		}
-		return precisao/instancias.numInstances();
-		
-		
+		return precisao/instancias.numInstances();	
 	}
 	
 	
