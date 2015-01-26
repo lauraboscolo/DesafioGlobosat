@@ -54,7 +54,7 @@ public class Gerenciadora {
 		String result = "["; // inicio da string que representa um array no json
 		for (int i = 0; i < noticias.size(); i++) {
 			if (i != noticias.size()-1)
-				result = result + gson.toJson(noticias.get(i) + ",");
+				result = result + gson.toJson(noticias.get(i)) + ",";
 			else 
 				result = result + gson.toJson(noticias.get(i));
 		}
