@@ -25,63 +25,110 @@ import com.google.gson.JsonObject;
 public class NoticiasServlet extends HttpServlet {
 		
 	//CONSTANTES
-	private String BIG_DATA_PATH;
+	private String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
+	private String BIG_DATA_TEST_PATH = "src/main/resources/arfftest.arff";
 	
 	private static final long serialVersionUID = 2395124688530916076L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String caracteristicas = request.getParameter("caracteristicas").toString();
+		PrintWriter writer = response.getWriter();
 		
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
 		JsonObject jsonObject = element.getAsJsonObject();
 		
-		PrintWriter writer = response.getWriter();
-		writer.println("paaah");
-		writer.flush();
-		Instance instancia = createInstance(jsonObject.toString(), writer);
+		Instance instancia = createInstance(jsonObject.toString());
 		PD pd = new PD(BIG_DATA_PATH);
 		try {
 			pd.treinar();
-			writer.println("test");
+			double indexClassi = pd.classificacaoInt(instancia)+1;
+			writer.println("class: " + indexClassi);
 			writer.flush();
-			//double indexClassi = pd.classificacaoInt(instancia)+1;
-			//writer.println("class: " + indexClassi);
+			double p= pd.getPrecisao(BIG_DATA_TEST_PATH);
+			writer.println("precisao: " + p);
+			writer.flush();
 			/////////////////////////////
 			//bancodedados(indexClassi);
 			////////////////////////////
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			writer.println(e.getMessage());
+			writer.flush();
 			e.printStackTrace();
 		}
-		writer.println("oiii");
-		
-		writer.flush();
 		writer.close();
 	}
 	
-	private Instance createInstance(String json, PrintWriter out)
+	public Instance createInstance(String json)
 	{
 		Gson gson = new Gson();
 		Usuario usuario = gson.fromJson(json, Usuario.class);
-		out.println(usuario.getCarreira()+usuario.getClasse()+usuario.getIdade()+usuario.getLema()+usuario.getParticipacao());
-		out.println("1");
-		out.flush();
-		ServletContext context = getServletContext();
-		Instance instancia = new DenseInstance(5); 
-		try{
-			instancia.setValue(new Attribute("lema"), usuario.getLema());
-			instancia.setValue(new Attribute("participacao"), usuario.getParticipacao());
-			instancia.setValue(new Attribute("idade"), usuario.getIdade());
-			instancia.setValue(new Attribute("carreira"), usuario.getCarreira());
-			instancia.setValue(new Attribute("classe"), usuario.getClasse());
-		}catch(Exception e)
-		{
-			context.log(e.getMessage());
-		}
-		out.println("5");
-		out.flush();
-		return instancia;
+		//1.ATTRIBUTES 
+		////atributos numericos
+		Attribute participacao = new Attribute("participacao");
+		Attribute idade = new Attribute("idade");
+		   
+		
+		//nominal
+		//LEMA
+		ArrayList<String> lemaNomes = new FastVector(); 
+		lemaNomes.add("EXCLUSIVIDADE"); 
+		lemaNomes.add("INOVACAO"); 
+		lemaNomes.add("MODA"); 
+		lemaNomes.add("SUSTENTABILIDADE"); 
+		Attribute lema = new Attribute("lema", lemaNomes); 
+		//CARREIRA
+		ArrayList<String> carreiraNomes = new FastVector(); 
+		carreiraNomes.add("PROFESSOR"); 
+		carreiraNomes.add("EMPRESARIO"); 
+		carreiraNomes.add("TECNOLOGIA"); 
+		carreiraNomes.add("FOTOGRAFO");  
+		carreiraNomes.add("CONSULTORIA");  
+		carreiraNomes.add("ARQUITETURA");  
+		carreiraNomes.add("UNIVERSITARIO");  
+		carreiraNomes.add("ENGENHARIA");  
+		carreiraNomes.add("PUBLICIDADE");  
+		carreiraNomes.add("ASSISTENTE");  
+		Attribute carreira = new Attribute("carreira", carreiraNomes); 
+		//CLASSE
+		ArrayList<String> classeNomes = new FastVector(); 
+		classeNomes.add("A"); 
+		classeNomes.add("B"); 
+		Attribute classe = new Attribute("classe", classeNomes); 
+		//perfil
+		ArrayList<String> perfilNomes = new FastVector(); 
+		perfilNomes.add("EXPLORADOR"); 
+		perfilNomes.add("SEGUIDORES"); 
+		perfilNomes.add("TRANSFORMADORES"); 
+		perfilNomes.add("VENCEDORES"); 
+		Attribute perfil = new Attribute("perfil", perfilNomes); 
+		
+		//DATASET
+		ArrayList<Attribute> attrs = new FastVector();
+		attrs.add(lema);
+		attrs.add(participacao);
+		attrs.add(idade);
+		attrs.add(carreira);
+		attrs.add(classe);
+		attrs.add(perfil);
+		
+		Instances dataset = new	Instances("gerenciadorNoticia", attrs, 0);
+		
+		
+		//criando a instancia
+		//first
+		double[] attValues = new double[dataset.numAttributes()]; 
+		attValues[0] = dataset.attribute("lema").indexOfValue(usuario.getLema()); 
+		attValues[1] = usuario.getParticipacao(); 
+		attValues[2] = usuario.getIdade(); 
+		attValues[3] = dataset.attribute("carreira").indexOfValue(usuario.getCarreira());
+		attValues[0] = dataset.attribute("classe").indexOfValue(usuario.getClasse());
+		attValues[0] = dataset.attribute("perfil").indexOfValue("");
+		dataset.add(new DenseInstance	(1.0, attValues)); 
+		dataset.setClassIndex(dataset.numAttributes()-1);
+		
+		return dataset.firstInstance();
+		
 	}
 
 }
