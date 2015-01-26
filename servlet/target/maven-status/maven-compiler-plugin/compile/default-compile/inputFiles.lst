@@ -1,2 +1,9 @@
-/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
-/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/AssuntoDao.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Gerenciadora.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Assunto.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Perfil.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/NoticiaDao.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticia.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/PerfilDao.java
+/home/laura.boscolo/Documentos/Desafios/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
