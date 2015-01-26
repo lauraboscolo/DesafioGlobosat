@@ -1,6 +1,9 @@
 package br.com.dextra.database;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class AssuntoDao {
 
@@ -46,6 +49,16 @@ public class AssuntoDao {
 			em.getTransaction().rollback();
 			return null;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Noticia> getNoticiaAssuntoResolvendoLazy(int id_assunto) {
+		String stmt = "SELECT DISTINCT n FROM noticias n"
+				+ " WHERE n.idAssunto = :id";
+		System.out.println(stmt);
+		Query query = em.createQuery(stmt);
+		query.setParameter("id", id_assunto);
+		return (List<Noticia>) query.getResultList();
 	}
 
 	public boolean updateAssunto(int idAssunto,String Assunto){

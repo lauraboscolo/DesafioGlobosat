@@ -37,10 +37,10 @@ public class PerfilDao {
 	}
 
 	public Perfil getPerfilAssuntoResolvendoLazy(int id_perfil) {
-		String stmt = "SELECT DISTINCT p FROM " + Perfil.class.getSimpleName() + " p "
-				+ "JOIN p.assuntos WHERE p.id = :id";
+		String stmt = "SELECT DISTINCT p FROM perfis p"
+				+ " WHERE p.id = :id";
 		System.out.println(stmt);
-		Query query = em.createNativeQuery(stmt);
+		Query query = em.createQuery(stmt);
 		query.setParameter("id", id_perfil);
 		return (Perfil) query.getSingleResult();
 	}

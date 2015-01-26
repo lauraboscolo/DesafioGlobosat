@@ -16,6 +16,9 @@ public class Assunto {
 	
 	@Column(nullable=false,name="assunto")
 	private String assunto;
+//	
+//	@OneToMany(mappedBy="idAssunto")
+//	private List<Noticia> noticias;
 	
 	public Assunto() {
 		this.assunto="";
@@ -41,5 +44,14 @@ public class Assunto {
 			throw new IllegalArgumentException("Campo Assunto Vazio");
 		this.assunto = assunto;
 	}
+	
+		
+//	public List<Noticia> getAssuntos() {
+//		return noticias;
+//	}
+//
+//	public void setAssuntos(List<Noticia> assuntos) {
+//		this.noticias = assuntos;
+//	}
 	
 }
