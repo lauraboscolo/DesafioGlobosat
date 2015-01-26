@@ -1,12 +1,13 @@
 package br.com.dextra.database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 
 public class Gerenciadora {
 	
@@ -33,14 +34,23 @@ public class Gerenciadora {
 
 	}
 	
-	public JsonObject getNoticiasPersonalizadas(int idPerfil){
+	public String getNoticiasPersonalizadas(int idPerfil){
 		// Pegar idPerfil
 		// Procurar na tabela de perfis_assuntos
 		// Procurar idAssunto encontrado nas noticias
 		List<Assunto> assuntosDePerfil;
 		assuntosDePerfil = perfis.getPerfilAssuntoResolvendoLazy(idPerfil).getAssuntos();
 		
-		return null;
+		List<Noticia> noticias = new ArrayList<Noticia>();
+		for (Assunto adp : assuntosDePerfil){
+			List<Noticia> noticiasDoAssunto = assuntos.getNoticiaAssuntoResolvendoLazy(adp.getIdAssunto());
+			
+			for (Noticia n : noticiasDoAssunto){
+				noticias.add(n);
+			}
+		}
+		
+		return gerarJsonDeNoticias(noticias);
 	}
 	
 	/**

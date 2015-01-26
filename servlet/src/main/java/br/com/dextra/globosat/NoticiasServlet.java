@@ -17,6 +17,7 @@ import weka.core.Instance;
 import weka.core.Instances;
 import Pojos.Usuario;
 import br.com.dextra.WEKA.PD;
+import br.com.dextra.database.Gerenciadora;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -45,10 +46,9 @@ public class NoticiasServlet extends HttpServlet {
 			double indexClassi = pd.classificacaoInt(instancia)+1;
 			writer.println("class: " + indexClassi);
 			writer.flush();
-
-			/////////////////////////////
-			//bancodedados(indexClassi);
-			////////////////////////////
+			
+			Gerenciadora ger = new Gerenciadora();
+			ger.getNoticiasPersonalizadas(indexClassi);
 		} catch (Exception e) {
 			writer.println(e.getMessage());
 			writer.flush();
