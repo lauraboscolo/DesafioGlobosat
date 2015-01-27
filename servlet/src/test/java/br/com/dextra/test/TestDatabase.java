@@ -8,15 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import br.com.dextra.database.AssuntoDao;
 import br.com.dextra.database.Gerenciadora;
 import br.com.dextra.database.Noticia;
-import br.com.dextra.database.PerfilDao;
+import br.com.dextra.database.NoticiaDao;
 
 
 public class TestDatabase {
@@ -93,11 +91,17 @@ public class TestDatabase {
 		Assert.assertNotEquals(retorno,esperado);
 		
 	}
-
-//	@After
-//	public void tearDown(){
-//		em.close();
-//		emf.close();
-//		System.out.println("Tester terminados... ");
-//	}
+	
+	@Test
+	public void testPegarTodasNoticias() {
+		emf = Persistence.createEntityManagerFactory("globosat");
+		em = emf.createEntityManager();
+		
+		NoticiaDao noticias = new  NoticiaDao(em);
+		
+		Assert.assertEquals(noticias.getTodasNoticias().size(), 34); // 34 tamanho total de noticias no banco 
+		
+		em.close();
+		emf.close();
+	}
 }
