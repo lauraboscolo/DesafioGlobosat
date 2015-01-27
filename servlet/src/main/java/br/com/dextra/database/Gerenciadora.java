@@ -20,10 +20,9 @@ public class Gerenciadora {
 	
 	private EntityManager em;
 	private EntityManagerFactory emf;
-	/*
-	 * Classe gerenciadora de tabelas
-	 */
+
 	public Gerenciadora() {
+		
 		// Para fazer acesso ao banco
 		emf = Persistence.createEntityManagerFactory("globosat");
 		em = emf.createEntityManager();
@@ -33,14 +32,19 @@ public class Gerenciadora {
 		this.noticias = new NoticiaDao(em);
 	}
 	
+	/**
+	 * Descobre a lista de notícias desejadas para o id do perfil informado
+	 * no parâmetro
+	 * @param idPerfil (id do perfil do usuário)
+	 * @return Array de JSon com notícias, em forma de String
+	 */
 	public String getNoticiasPersonalizadas(int idPerfil){
-		// Pegar idPerfil
-		// Procurar na tabela de perfis_assuntos
-		// Procurar idAssunto encontrado nas noticias
+		// Descobre os assuntos desejados para o perfil
 		List<Assunto> assuntosDePerfil;
 		assuntosDePerfil = perfis.getPerfilAssuntoResolvendoLazy(idPerfil).getAssuntos();
 		
 		List<Noticia> noticias = new ArrayList<Noticia>();
+		// Pega todas as notícias dos assuntos da lista 'assuntosDePerfil'
 		for (Assunto adp : assuntosDePerfil){
 			List<Noticia> noticiasDoAssunto = assuntos.getNoticiaAssuntoResolvendoLazy(adp.getIdAssunto());
 			
@@ -51,7 +55,9 @@ public class Gerenciadora {
 		
 		return gerarJsonDeNoticias(noticias);
 	}
-	
+	/**
+	 * Fechar 
+	 */
 	public String getTodasAsNoticias(){
 		return gerarJsonDeNoticias(noticias.getTodasNoticias());
 	}	

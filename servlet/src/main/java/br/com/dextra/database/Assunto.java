@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name="assuntos")
-public class Assunto {
+public class Assunto implements java.io.Serializable {
+	
+	private static final long serialVersionUID = -5304231939338469956L;
 
 	@Id
 	@Column(nullable=false,name="id")
@@ -16,9 +18,6 @@ public class Assunto {
 	
 	@Column(nullable=false,name="assunto")
 	private String assunto;
-//	
-//	@OneToMany(mappedBy="idAssunto")
-//	private List<Noticia> noticias;
 	
 	public Assunto() {
 		this.assunto="";
@@ -44,14 +43,4 @@ public class Assunto {
 			throw new IllegalArgumentException("Campo Assunto Vazio");
 		this.assunto = assunto;
 	}
-	
-		
-//	public List<Noticia> getAssuntos() {
-//		return noticias;
-//	}
-//
-//	public void setAssuntos(List<Noticia> assuntos) {
-//		this.noticias = assuntos;
-//	}
-	
 }
