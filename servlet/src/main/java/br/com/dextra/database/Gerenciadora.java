@@ -55,13 +55,7 @@ public class Gerenciadora {
 		
 		return gerarJsonDeNoticias(noticias);
 	}
-	/**
-	 * Fechar 
-	 */
-	public String getTodasAsNoticias(){
-		return gerarJsonDeNoticias(noticias.getTodasNoticias());
-	}	
-	
+
 	/**
 	 * Método para gerar uma String json passando um array de noticias
 	 * @param array que sera gerado o json
