@@ -30,7 +30,6 @@ public class NoticiasServlet extends HttpServlet {
 		
 	//CONSTANTES
 	private String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
-	private String BIG_DATA_TEST_PATH = "src/main/resources/arfftest.arff";
 	
 	//variaveis
 	private PD _pd;
@@ -56,7 +55,7 @@ public class NoticiasServlet extends HttpServlet {
 		
 		PrintWriter writer = response.getWriter();
 
-
+		
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
 		JsonObject jsonObject = element.getAsJsonObject();
@@ -67,15 +66,6 @@ public class NoticiasServlet extends HttpServlet {
 			double indexClassi = _pd.classificacaoInt(instancia)+1;
 			
 			Gerenciadora ger = new Gerenciadora();
-			try {
-				System.out.println("PRECISAO: "+_pd.getPrecisao(BIG_DATA_TEST_PATH));
-			} catch (Exception e1) {
-				System.out.println(e1.getMessage());
-				e1.printStackTrace();
-			}
-			System.out.println("INSTANCIA: "+caracteristicas+"");
-			System.out.println("Servlet1: "+indexClassi+"");
-			System.out.println("Servlet2: "+(int)indexClassi+"");
 			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
 			
 			writer.println(jsonRetorno);
@@ -92,12 +82,12 @@ public class NoticiasServlet extends HttpServlet {
 	{
 		Gson gson = new Gson();
 		Usuario usuario = gson.fromJson(json, Usuario.class);
-		//1.ATTRIBUTES 
+		
+		
 		////atributos numericos
 		Attribute participacao = new Attribute("participacao");
 		Attribute idade = new Attribute("idade");
 		   
-		
 		//nominal
 		//LEMA
 		ArrayList<String> lemaNomes = new ArrayList(); 
@@ -110,6 +100,7 @@ public class NoticiasServlet extends HttpServlet {
 		ArrayList<String> carreiraNomes = new ArrayList(); 
 		carreiraNomes.add("PROFESSOR"); 
 		carreiraNomes.add("EMPRESARIO"); 
+		carreiraNomes.add("EXECUTIVO"); 
 		carreiraNomes.add("TECNOLOGIA"); 
 		carreiraNomes.add("FOTOGRAFO");  
 		carreiraNomes.add("CONSULTORIA");  
@@ -124,7 +115,7 @@ public class NoticiasServlet extends HttpServlet {
 		classeNomes.add("A"); 
 		classeNomes.add("B"); 
 		Attribute classe = new Attribute("classe", classeNomes); 
-		//perfil
+		//PERFIL
 		ArrayList<String> perfilNomes = new ArrayList(); 
 		perfilNomes.add("EXPLORADOR"); 
 		perfilNomes.add("VENCEDORES"); 
@@ -145,7 +136,6 @@ public class NoticiasServlet extends HttpServlet {
 		
 		
 		//criando a instancia
-		//first
 		double[] attValues = new double[dataset.numAttributes()]; 
 		attValues[0] = dataset.attribute("lema").indexOfValue(usuario.getLema()); 
 		attValues[1] = usuario.getParticipacao(); 
@@ -153,6 +143,7 @@ public class NoticiasServlet extends HttpServlet {
 		attValues[3] = dataset.attribute("carreira").indexOfValue(usuario.getCarreira());
 		attValues[4] = dataset.attribute("classe").indexOfValue(usuario.getClasse());
 		attValues[5] = dataset.attribute("perfil").indexOfValue("");
+		
 		dataset.add(new DenseInstance	(1.0, attValues)); 
 		dataset.setClassIndex(dataset.numAttributes()-1);
 		
