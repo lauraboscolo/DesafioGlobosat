@@ -2,12 +2,9 @@ package br.com.dextra.globosat;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import weka.core.Attribute;
 import weka.core.DenseInstance;
-import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
-import Pojos.Usuario;
 import br.com.dextra.WEKA.PD;
 import br.com.dextra.database.Gerenciadora;
+import br.com.dextra.database.Usuario;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
