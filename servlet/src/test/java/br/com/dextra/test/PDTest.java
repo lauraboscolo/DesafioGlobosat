@@ -17,7 +17,7 @@ public class PDTest {
 
 	@Test(expected = FileNotFoundException.class) 
 	public void testPD() throws FileNotFoundException {
-		PD pdT = new PD("qwertyuiop");
+		PD pdT = new PD("arquivoInexistente");
 	}
 
 	@Test
@@ -53,14 +53,12 @@ public class PDTest {
 		try {
 			PD pdT = new PD("src/main/resources/dados_treinamento.ARFF");
 			pdT.treinar();
-			pdT.getPrecisao("src/main/resources/arfftest.arff");
+			// A precisao utilizando como teste o proprio arquivo de treinamento deve ser 100%
 			assertTrue(pdT.getPrecisao("src/main/resources/dados_treinamento.ARFF") == 1.0);
-			assertTrue(true);
 		} catch (FileNotFoundException e) {
 			fail("Lançou excessao de arquivo inexistente");
 		} catch (Exception e) {
 			fail("falha na criação do classificador");
-			e.printStackTrace();
 		}
 	}
 	
@@ -70,18 +68,18 @@ public class PDTest {
 		try {
 			PD pdT = new PD("src/main/resources/dados_treinamento.ARFF");
 			pdT.treinar();
-			FileReader fl = new FileReader("src/main/resources/dados_treinamento.ARFF");
 			
+			FileReader fl = new FileReader("src/main/resources/dados_treinamento.ARFF");
 			Instances instancias = new Instances(fl);
 			instancias.setClassIndex(instancias.numAttributes()-1);
+			
 			Instance instanciaAtual = instancias.get(0);
+			// A classificacao deve ser correta, uma vez que, as instancias carregadas do arquivo sao as do treinamento
 			assertTrue(instanciaAtual.classValue() == pdT.classificacaoInt(instanciaAtual));
-			assertTrue(true);
 		} catch (FileNotFoundException e) {
 			fail("Lançou excessao de arquivo inexistente");
 		} catch (Exception e) {
 			fail("falha na criação do classificador");
-			e.printStackTrace();
 		}
 	}
 	
