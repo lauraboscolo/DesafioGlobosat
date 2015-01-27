@@ -1,6 +1,12 @@
 package br.com.dextra.database;
 
 public class Usuario {
+	private String lema;
+	private double participacao;
+	private double idade;
+	private String carreira;
+	private String classe;
+	private String perfil;
 	public String getLema() {
 		return lema;
 	}
@@ -37,11 +43,5 @@ public class Usuario {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
-	private String lema;
-	private double participacao;
-	private double idade;
-	private String carreira;
-	private String classe;
-	private String perfil;
 	
 }
