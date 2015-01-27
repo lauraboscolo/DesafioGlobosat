@@ -15,12 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import weka.core.Attribute;
 import weka.core.DenseInstance;
-import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
-import Pojos.Usuario;
 import br.com.dextra.WEKA.PD;
 import br.com.dextra.database.Gerenciadora;
+import br.com.dextra.database.Usuario;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;

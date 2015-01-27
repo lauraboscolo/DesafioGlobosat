@@ -58,7 +58,7 @@ public class Gerenciadora {
 	
 	/**
 	 * Método para gerar uma String json passando um array de noticias
-	 * @param noticias: array que sera gerado o json
+	 * @param array que sera gerado o json
 	 * 
 	 */
 	public String gerarJsonDeNoticias(List<Noticia>noticias){

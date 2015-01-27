@@ -1,4 +1,4 @@
-package Pojos;
+package br.com.dextra.database;
 
 public class Usuario {
 	public String getLema() {
