@@ -50,10 +50,5 @@ public class NoticiaDao {
 		}
 	}
 
-	public List<Noticia> getTodasNoticias(){
-		em.getTransaction().begin();
-		Query query = (Query) em.createQuery("from noticias");
-		return  query.list();
-	}
 	
 }

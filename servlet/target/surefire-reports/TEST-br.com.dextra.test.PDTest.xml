@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.549" errors="0" skipped="0" tests="5" name="br.com.dextra.test.PDTest">
+<testsuite failures="0" time="1.685" errors="0" skipped="0" tests="5" name="br.com.dextra.test.PDTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/amd64"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet"/>
+    <property name="user.dir" value="/home/joao.vendrame/DesafioGlobosat/servlet"/>
     <property name="java.runtime.version" value="1.7.0_72-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/endorsed"/>
@@ -31,12 +31,12 @@
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="3.13.0-32-generic"/>
-    <property name="user.home" value="/home/rodrigo.amaral"/>
+    <property name="user.home" value="/home/joao.vendrame"/>
     <property name="user.timezone" value="America/Sao_Paulo"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.7"/>
-    <property name="user.name" value="rodrigo.amaral"/>
+    <property name="user.name" value="joao.vendrame"/>
     <property name="java.class.path" value="/opt/maven/boot/plexus-classworlds-2.5.1.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -59,9 +59,9 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.505" classname="br.com.dextra.test.PDTest" name="testTreinar"/>
-  <testcase time="0.001" classname="br.com.dextra.test.PDTest" name="testPD"/>
-  <testcase time="0.38" classname="br.com.dextra.test.PDTest" name="testGetPrecisao"/>
-  <testcase time="0.349" classname="br.com.dextra.test.PDTest" name="testClassificacaoInt"/>
-  <testcase time="0.314" classname="br.com.dextra.test.PDTest" name="testTreinarIntDoubleDoubleString"/>
+  <testcase time="0.583" classname="br.com.dextra.test.PDTest" name="testTreinar"/>
+  <testcase time="0" classname="br.com.dextra.test.PDTest" name="testPD"/>
+  <testcase time="0.386" classname="br.com.dextra.test.PDTest" name="testGetPrecisao"/>
+  <testcase time="0.363" classname="br.com.dextra.test.PDTest" name="testClassificacaoInt"/>
+  <testcase time="0.353" classname="br.com.dextra.test.PDTest" name="testTreinarIntDoubleDoubleString"/>
 </testsuite>

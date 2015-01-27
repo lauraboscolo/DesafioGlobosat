@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="3.746" errors="0" skipped="0" tests="3" name="br.com.dextra.test.TestDatabase">
+<testsuite failures="0" time="5.742" errors="2" skipped="0" tests="6" name="br.com.dextra.test.TestDatabase">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/amd64"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/rodrigo.amaral/Globosat/DesafioGlobosat/servlet"/>
+    <property name="user.dir" value="/home/joao.vendrame/DesafioGlobosat/servlet"/>
     <property name="java.runtime.version" value="1.7.0_72-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/endorsed"/>
@@ -31,12 +31,12 @@
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="3.13.0-32-generic"/>
-    <property name="user.home" value="/home/rodrigo.amaral"/>
+    <property name="user.home" value="/home/joao.vendrame"/>
     <property name="user.timezone" value="America/Sao_Paulo"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.7"/>
-    <property name="user.name" value="rodrigo.amaral"/>
+    <property name="user.name" value="joao.vendrame"/>
     <property name="java.class.path" value="/opt/maven/boot/plexus-classworlds-2.5.1.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -59,7 +59,129 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="2.194" classname="br.com.dextra.test.TestDatabase" name="testGerarJsonNoticias"/>
-  <testcase time="0.757" classname="br.com.dextra.test.TestDatabase" name="testPesquisaDeAssunto"/>
-  <testcase time="0.795" classname="br.com.dextra.test.TestDatabase" name="testPesquisaDeNoticiaComIdAssunto"/>
+  <testcase time="2.82" classname="br.com.dextra.test.TestDatabase" name="testNoticiasPersonalizadas"/>
+  <testcase time="0.732" classname="br.com.dextra.test.TestDatabase" name="testGerarJsonNoticias"/>
+  <testcase time="0.758" classname="br.com.dextra.test.TestDatabase" name="testPesquisaDeAssunto"/>
+  <testcase time="0.709" classname="br.com.dextra.test.TestDatabase" name="testPegarTodasNoticias">
+    <error message="org.hibernate.jpa.internal.QueryImpl cannot be cast to org.hibernate.Query" type="java.lang.ClassCastException">java.lang.ClassCastException: org.hibernate.jpa.internal.QueryImpl cannot be cast to org.hibernate.Query
+	at br.com.dextra.database.NoticiaDao.getTodasNoticias(NoticiaDao.java:55)
+	at br.com.dextra.test.TestDatabase.testPegarTodasNoticias(TestDatabase.java:96)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+    <system-err>Jan 27, 2015 1:43:50 PM org.hibernate.ejb.HibernatePersistence logDeprecation
+WARN: HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+Jan 27, 2015 1:43:50 PM org.hibernate.ejb.HibernatePersistence logDeprecation
+WARN: HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+Jan 27, 2015 1:43:50 PM org.hibernate.ejb.HibernatePersistence logDeprecation
+WARN: HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+Jan 27, 2015 1:43:50 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [
+	name: globosat
+	...]
+Jan 27, 2015 1:43:50 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+Jan 27, 2015 1:43:50 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000401: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://dbserver:5443/desafio_globosat]
+Jan 27, 2015 1:43:50 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000046: Connection properties: {user=desafio_globosat, password=****}
+Jan 27, 2015 1:43:50 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH000006: Autocommit mode: false
+Jan 27, 2015 1:43:50 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+Jan 27, 2015 1:43:51 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+Jan 27, 2015 1:43:51 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+Jan 27, 2015 1:43:51 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: public.assuntos
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id, assunto]
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: public.noticias
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id, noticia, link, id_assunto]
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: public.perfis
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id, nome]
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: public.perfis_assuntos
+Jan 27, 2015 1:43:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id, id_assunto, id_perfil]
+Jan 27, 2015 1:43:51 PM org.hibernate.jpa.internal.EntityManagerFactoryRegistry addEntityManagerFactory
+WARN: HHH000436: Entity manager factory name (globosat) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property &apos;hibernate.ejb.entitymanager_factory_name&apos;
+</system-err>
+  </testcase>
+  <testcase time="0.722" classname="br.com.dextra.test.TestDatabase" name="testPesquisaDeNoticiaComIdAssunto"/>
+  <testcase time="0.001" classname="br.com.dextra.test.TestDatabase" name="testPesquisaDeAssuntoComIdPerfil">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at br.com.dextra.database.PerfilDao.getPerfilAssuntoResolvendoLazy(PerfilDao.java:40)
+	at br.com.dextra.test.TestDatabase.testPesquisaDeAssuntoComIdPerfil(TestDatabase.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+    <system-out>SELECT DISTINCT p FROM perfis p WHERE p.id = :id
+</system-out>
+  </testcase>
 </testsuite>
