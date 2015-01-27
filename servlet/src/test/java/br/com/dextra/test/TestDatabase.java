@@ -22,13 +22,6 @@ public class TestDatabase {
 	EntityManagerFactory emf;
 	EntityManager em;
 	
-//	@Before
-//	public void criarEntitys(){
-//		System.out.println("Inicializando testes... ");
-//		emf = Persistence.createEntityManagerFactory("globosat");
-//		em = emf.createEntityManager();
-//	}
-	
 	@Test
 	public void testPesquisaDeAssunto() throws SQLException {
 		emf = Persistence.createEntityManagerFactory("globosat");
