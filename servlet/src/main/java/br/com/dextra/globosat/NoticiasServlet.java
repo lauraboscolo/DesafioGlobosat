@@ -127,9 +127,9 @@ public class NoticiasServlet extends HttpServlet {
 		//perfil
 		ArrayList<String> perfilNomes = new ArrayList(); 
 		perfilNomes.add("EXPLORADOR"); 
+		perfilNomes.add("VENCEDORES"); 
 		perfilNomes.add("SEGUIDORES"); 
 		perfilNomes.add("TRANSFORMADORES"); 
-		perfilNomes.add("VENCEDORES"); 
 		Attribute perfil = new Attribute("perfil", perfilNomes); 
 		
 		//DATASET
@@ -151,8 +151,8 @@ public class NoticiasServlet extends HttpServlet {
 		attValues[1] = usuario.getParticipacao(); 
 		attValues[2] = usuario.getIdade(); 
 		attValues[3] = dataset.attribute("carreira").indexOfValue(usuario.getCarreira());
-		attValues[0] = dataset.attribute("classe").indexOfValue(usuario.getClasse());
-		attValues[0] = dataset.attribute("perfil").indexOfValue("");
+		attValues[4] = dataset.attribute("classe").indexOfValue(usuario.getClasse());
+		attValues[5] = dataset.attribute("perfil").indexOfValue("");
 		dataset.add(new DenseInstance	(1.0, attValues)); 
 		dataset.setClassIndex(dataset.numAttributes()-1);
 		

@@ -18,9 +18,9 @@ public class TestNoticiasServlet {
 			pd = new PD("src/main/resources/dados_treinamento.ARFF");
 			pd.treinar();
 			NoticiasServlet sv = new NoticiasServlet();
-			Instance inst = sv.createInstance("{\"lema\":\"MODA\",\"participacao\":\"0.3\",\"idade\":32,\"carreira\":\"FOTOGRAFO\",\"classe\":\"B\"}");
-			pd.classificacaoInt(inst);
-			assertTrue(true);
+			Instance inst = sv.createInstance("{\"lema\":\"MODA\",\"participacao\":\"0.3\",\"idade\":28,\"carreira\":\"PUBLICIDADE\",\"classe\":\"B\"}");
+			
+			assertEquals(pd.classificacaoInt(inst), null);
 		} catch (FileNotFoundException e) {
 			fail("arquivo nao ARFF encontrado");
 			e.printStackTrace();
