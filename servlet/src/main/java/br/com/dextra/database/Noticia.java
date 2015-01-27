@@ -11,8 +11,9 @@ import javax.persistence.ManyToOne;
 
 
 @Entity(name="noticias")
-public class Noticia {
-	// Classe que representa a tabela Noticias do banco
+public class Noticia implements java.io.Serializable {
+
+	private static final long serialVersionUID = 7772366447603193317L;
 
 	// Campos da Tabela
 	@Id
@@ -20,7 +21,6 @@ public class Noticia {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idNoticia;
 	
-//	@ManyToOne
 	@Column(nullable=false,name="id_assunto")
 	private int idAssunto;
 

@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 @Entity(name = "perfis")
 public class Perfil implements java.io.Serializable {
 
-	private static final long serialVersionUID = -5304231939338469956L;
+	private static final long serialVersionUID = -9064070611033978682L;
 
 	@Id
 	@Column(nullable = false, name = "id")

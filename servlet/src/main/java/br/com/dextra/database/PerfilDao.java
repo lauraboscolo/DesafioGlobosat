@@ -1,9 +1,6 @@
 package br.com.dextra.database;
 
-import java.util.ArrayList;
-
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 public class PerfilDao {
