@@ -66,7 +66,7 @@ public class TestDatabase {
 	@Test
 	public void testNoticiasPersonalizadas(){
 		Gerenciadora g = new Gerenciadora();
-		Assert.assertEquals(g.getNoticiasPersonalizadas(3),"");
+		Assert.assertNotEquals(g.getNoticiasPersonalizadas(3),"");
 	}
 	
 	@Test
