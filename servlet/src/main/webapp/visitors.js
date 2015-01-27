@@ -21,6 +21,11 @@ var array = [
  	{lema: "MODA", participacao: "0.3", idade: 32, carreira: "FOTOGRAFO", classe: "B"}
 ];
 
+function chamarTodas(){
+	$.get("");
+	
+}
+
 function visitor() {
 	var p = next();
 	console.info("data: p"+JSON.stringify(p));

@@ -1,6 +1,10 @@
 package br.com.dextra.database;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+
+import org.hibernate.Query;
 
 public class NoticiaDao {
 
@@ -48,6 +52,12 @@ public class NoticiaDao {
 		}
 	}
 
+	public List<Noticia> getTodasNoticias(){
+		em.getTransaction().begin();
+		Query query = (Query) em.createQuery("from noticias");
+		return  query.list();
+	}
+	
 	public boolean updateNoticia(int idNoticia,int idAssunto,String noticia,String link){
 		/** IMPLEMENTAR
 		em.getTransaction().begin();
