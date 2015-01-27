@@ -28,10 +28,9 @@ public class Gerenciadora {
 		emf = Persistence.createEntityManagerFactory("globosat");
 		em = emf.createEntityManager();
 		
-		this.noticias = new NoticiaDao(em);
 		this.assuntos = new AssuntoDao(em);
 		this.perfis   = new PerfilDao(em);
-
+		this.noticias = new NoticiaDao(em);
 	}
 	
 	public String getNoticiasPersonalizadas(int idPerfil){
@@ -52,6 +51,10 @@ public class Gerenciadora {
 		
 		return gerarJsonDeNoticias(noticias);
 	}
+	
+	public String getTodasAsNoticias(){
+		return gerarJsonDeNoticias(noticias.getTodasNoticias());
+	}	
 	
 	/**
 	 * Método para gerar uma String json passando um array de noticias
