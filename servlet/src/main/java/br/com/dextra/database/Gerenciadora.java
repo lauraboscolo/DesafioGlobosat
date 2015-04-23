@@ -11,10 +11,6 @@ import com.google.gson.Gson;
 
 public class Gerenciadora {
 	
-	/**
-	 * Classes de manipulação direta no banco
-	 */
-	private NoticiaDao noticias;
 	private AssuntoDao assuntos;
 	private PerfilDao perfis;
 	
@@ -29,7 +25,7 @@ public class Gerenciadora {
 		
 		this.assuntos = new AssuntoDao(em);
 		this.perfis   = new PerfilDao(em);
-		this.noticias = new NoticiaDao(em);
+		new NoticiaDao(em);
 	}
 	
 	/**

@@ -16,7 +16,6 @@ import org.junit.Test;
 import br.com.dextra.database.AssuntoDao;
 import br.com.dextra.database.Gerenciadora;
 import br.com.dextra.database.Noticia;
-import br.com.dextra.database.NoticiaDao;
 import br.com.dextra.database.PerfilDao;
 
 

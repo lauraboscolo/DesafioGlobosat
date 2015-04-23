@@ -1,5 +1,6 @@
 package br.com.dextra.WEKA;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,27 +11,28 @@ import weka.core.Instances;
 
 public class PD {
 
-	//Var Globais
 	private String _big_data_path;
 	private MultilayerPerceptron _mlp;
 	private int _classf = -1;
 	
 	public PD(String big_data_path) throws FileNotFoundException
 	{
-		this._big_data_path = big_data_path;
-		//teste de existencia de arquivo
-		FileReader fl = new FileReader(_big_data_path);
-		
+		if (arquivoExiste(big_data_path)){
+			this._big_data_path = big_data_path;
+		} else {
+			throw new FileNotFoundException("Arquivo não encontrado");
+		}
 	}
 	
 	public PD(String big_data_path, int classfier) throws FileNotFoundException
 	{
-		this._big_data_path = big_data_path;
-		//teste de existencia de arquivo
-		FileReader fl = new FileReader(_big_data_path);
-		this._classf = classfier;
+		if (arquivoExiste(big_data_path)){
+			this._big_data_path = big_data_path;
+			this._classf = classfier;
+		} else {
+			throw new FileNotFoundException("Arquivo não encontrado");
+		}
 	}
-	
 	
 	/**
 	 * Método que permite que a rede seja treinada de forma padrao utilizando do big_data
@@ -103,10 +105,6 @@ public class PD {
 		return precisao/instancias.numInstances();	
 	}
 	
-	
-	
-	
-	////////METODOS PRIVATE 
 	private Instances createInstancia(String path)
 	{
 		try {
@@ -127,5 +125,10 @@ public class PD {
 		}
 		return null;
 
+	}
+
+	private boolean arquivoExiste(String caminhoArquivo) {
+		File f = new File(caminhoArquivo);
+		return (f.exists() && !f.isDirectory());
 	}
 }

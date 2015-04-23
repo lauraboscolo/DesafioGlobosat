@@ -85,3 +85,6 @@ INSERT INTO noticias(id, id_assunto, noticia, link) VALUES(33, 8, 'Detentos de P
 INSERT INTO noticias(id, id_assunto, noticia, link) VALUES(34, 8, 'Mais de 200 mil redações do Enem foram canceladas por fuga ao tema', 'http://g1.globo.com/educacao/enem/2014/noticia/2015/01/mais-de-200-mil-redacoes-do-enem-foram-canceladas-por-fuga-ao-tema.html');
 
 
+alter table perfis_assuntos add column qtd_acessos int
+update perfis_assuntos set qtd_acessos = 0 where qtd_acessos is null;
+

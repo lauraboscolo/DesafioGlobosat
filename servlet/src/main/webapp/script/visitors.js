@@ -21,17 +21,11 @@ var array = [
  	{lema: "MODA", participacao: "0.3", idade: 32, carreira: "FOTOGRAFO", classe: "B"}
 ];
 
-function chamarTodas(){
-	$.get("");
-	
-}
-
 function visitor() {
 	var p = next();
 	console.info("data: p"+JSON.stringify(p));
 	$.post("noticias", {caracteristicas: JSON.stringify(p)}, function(data) {
-		
-		
+		console.info(data);
 		$.get("pages/templatenoticia.html", function(template){
 			for (index = 0; index < data.length; ++index) {
 					$(".noticias").append(
@@ -40,8 +34,15 @@ function visitor() {
 					console.info("data: "+data[index]);
 					console.info("template: "+template);
 			}
+			
+			$('.linkNoticia').unbind('click').click(function(){
+				$.put("noticias", {idAssunto : $($('.linkNoticia').data('assunto'))},function(){});
+			});
 		}, "html");
+		
 	},"json");
+	
+	
 }
 
 function next() {

@@ -1,8 +1,6 @@
 package br.com.dextra.database;
 
-import java.util.List;
 import javax.persistence.EntityManager;
-import org.hibernate.Query;
 
 public class NoticiaDao {
 

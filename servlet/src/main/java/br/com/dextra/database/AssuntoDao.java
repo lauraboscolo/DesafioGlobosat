@@ -1,6 +1,7 @@
 package br.com.dextra.database;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -45,6 +46,7 @@ public class AssuntoDao {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Noticia> getNoticiaAssuntoResolvendoLazy(int id_assunto) {
 		String stmt = "SELECT DISTINCT n FROM noticias n"
 				+ " WHERE n.idAssunto = :id";

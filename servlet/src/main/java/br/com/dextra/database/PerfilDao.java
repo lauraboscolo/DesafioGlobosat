@@ -11,8 +11,8 @@ public class PerfilDao {
 		this.em = em;
 	}
 
-	public boolean addPerfil(int perfil) {
-		Perfil _perfil = new Perfil(perfil, null);
+	public boolean addPerfil(int perfil,String descricao) {
+		Perfil _perfil = new Perfil(perfil, descricao);
 
 		// Abre a conexão com o Banco, insere um dado persistente
 		em.getTransaction().begin();
@@ -43,18 +43,12 @@ public class PerfilDao {
 	}
 
 	public Perfil removePerfilAssunto(int id) {
-		em.getTransaction().begin();
-		
 		try {
 			Perfil perfil = this.getPerfil(id);
 			em.remove(perfil);
-			em.getTransaction().commit();
-			// Remove a Assunto do banco
 
 			return perfil;
 		} catch (Exception e) {
-			// Desfazer o que foi feito
-			em.getTransaction().rollback();
 			return null;
 		}
 	}

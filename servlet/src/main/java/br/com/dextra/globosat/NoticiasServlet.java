@@ -24,10 +24,8 @@ import com.google.gson.JsonObject;
 
 public class NoticiasServlet extends HttpServlet {
 		
-	//CONSTANTES
-	private String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
+	private final String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
 	
-	//variaveis
 	private PD _pd;
 	
 	private static final long serialVersionUID = 2395124688530916076L;
@@ -43,6 +41,13 @@ public class NoticiasServlet extends HttpServlet {
 		}
 	}
 
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		Integer idAsusnto = Integer.parseInt(req.getParameter("caracteristicas"));
+		// TODO Incrementar 1 na tabela de acessos
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String caracteristicas = request.getParameter("caracteristicas").toString();
 		
@@ -86,14 +91,14 @@ public class NoticiasServlet extends HttpServlet {
 		   
 		//nominal
 		//LEMA
-		ArrayList<String> lemaNomes = new ArrayList(); 
+		ArrayList<String> lemaNomes = new ArrayList<String>(); 
 		lemaNomes.add("EXCLUSIVIDADE"); 
 		lemaNomes.add("INOVACAO"); 
 		lemaNomes.add("MODA"); 
 		lemaNomes.add("SUSTENTABILIDADE"); 
 		Attribute lema = new Attribute("lema", lemaNomes); 
 		//CARREIRA
-		ArrayList<String> carreiraNomes = new ArrayList(); 
+		ArrayList<String> carreiraNomes = new ArrayList<String>(); 
 		carreiraNomes.add("PROFESSOR"); 
 		carreiraNomes.add("EMPRESARIO"); 
 		carreiraNomes.add("EXECUTIVO"); 
@@ -107,12 +112,12 @@ public class NoticiasServlet extends HttpServlet {
 		carreiraNomes.add("ASSISTENTE");  
 		Attribute carreira = new Attribute("carreira", carreiraNomes); 
 		//CLASSE
-		ArrayList<String> classeNomes = new ArrayList(); 
+		ArrayList<String> classeNomes = new ArrayList<String>(); 
 		classeNomes.add("A"); 
 		classeNomes.add("B"); 
 		Attribute classe = new Attribute("classe", classeNomes); 
 		//PERFIL
-		ArrayList<String> perfilNomes = new ArrayList(); 
+		ArrayList<String> perfilNomes = new ArrayList<String>(); 
 		perfilNomes.add("EXPLORADOR"); 
 		perfilNomes.add("VENCEDORES"); 
 		perfilNomes.add("SEGUIDORES"); 
@@ -120,7 +125,7 @@ public class NoticiasServlet extends HttpServlet {
 		Attribute perfil = new Attribute("perfil", perfilNomes); 
 		
 		//DATASET
-		ArrayList<Attribute> attrs = new ArrayList();
+		ArrayList<Attribute> attrs = new ArrayList<Attribute>();
 		attrs.add(lema);
 		attrs.add(participacao);
 		attrs.add(idade);
