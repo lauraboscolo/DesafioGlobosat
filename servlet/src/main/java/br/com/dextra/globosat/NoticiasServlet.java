@@ -79,16 +79,16 @@ public class NoticiasServlet extends HttpServlet {
 		try {
 			double indexClassi = -1;
 			indexClassi = classificarUsuario(caracteristicas);
+			System.out.println("Cliassificador :" + indexClassi);
 			Gerenciadora ger = new Gerenciadora(em);
 			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
-
+			System.out.println("RETORNO :" + jsonRetorno);
 			writer.println(jsonRetorno);
 			writer.flush();
-
 		} catch (Exception e) {
+			e.printStackTrace();
 			writer.println(e.getMessage());
 			writer.flush();
-			e.printStackTrace();
 		}
 	}
 

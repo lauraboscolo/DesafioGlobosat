@@ -30,13 +30,14 @@ public class Gerenciadora {
 	public String getNoticiasPersonalizadas(int idPerfil){
 		List<Acesso> assuntosDePerfil;
 		assuntosDePerfil = perfilDao.getPerfilAssuntoResolvendoLazy(idPerfil).getPerfilAssunto();
-		
+		System.out.println("Tamando : " + assuntosDePerfil.size());
 		List<Noticia> noticias = new ArrayList<Noticia>();
-		// Pega todas as notícias dos assuntos da lista 'assuntosDePerfil'
 		for (Acesso perfilAssunto : assuntosDePerfil){
+			System.out.println("Acesso :" + perfilAssunto.getAssunto());
 			List<Noticia> noticiasDoAssunto = assuntoDao.getNoticiaAssuntoResolvendoLazy(perfilAssunto.getAssunto());
-			
-			noticias.addAll(noticiasDoAssunto);
+			for (Noticia n : noticiasDoAssunto ){
+				noticias.add(n);
+			}
 		}
 		
 		return gerarJsonDeNoticias(noticias);

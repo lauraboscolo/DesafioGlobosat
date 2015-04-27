@@ -52,6 +52,7 @@ public class AssuntoDao {
 				+ " WHERE n.idAssunto = :id";
 		Query query = em.createQuery(stmt);
 		query.setParameter("id", id_assunto);
+		System.out.println("Lazy:" + query.toString());
 		return (List<Noticia>) query.getResultList();
 	}
 }
