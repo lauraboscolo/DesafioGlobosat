@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="br.com.dextra.test.PDTest" time="1.066" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="br.com.dextra.test.PDTest" time="1.235" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/local/java/jdk1.8.0_31/jre/lib/amd64"/>
@@ -59,9 +59,9 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="br.com.dextra.test.PDTest" name="testTreinar" time="0.378"/>
-  <testcase classname="br.com.dextra.test.PDTest" name="testPD" time="0"/>
-  <testcase classname="br.com.dextra.test.PDTest" name="testGetPrecisao" time="0.255"/>
-  <testcase classname="br.com.dextra.test.PDTest" name="testClassificacaoInt" time="0.21"/>
-  <testcase classname="br.com.dextra.test.PDTest" name="testTreinarIntDoubleDoubleString" time="0.223"/>
+  <testcase classname="br.com.dextra.test.PDTest" name="testTreinar" time="0.519"/>
+  <testcase classname="br.com.dextra.test.PDTest" name="testPD" time="0.001"/>
+  <testcase classname="br.com.dextra.test.PDTest" name="testGetPrecisao" time="0.246"/>
+  <testcase classname="br.com.dextra.test.PDTest" name="testClassificacaoInt" time="0.234"/>
+  <testcase classname="br.com.dextra.test.PDTest" name="testTreinarIntDoubleDoubleString" time="0.235"/>
 </testsuite>

@@ -24,11 +24,11 @@ public class PD {
 		}
 	}
 	
-	public PD(String big_data_path, int classfier) throws FileNotFoundException
+	public PD(String big_data_path, int classifier) throws FileNotFoundException
 	{
 		if (arquivoExiste(big_data_path)){
 			this._big_data_path = big_data_path;
-			this._classf = classfier;
+			this._classf = classifier;
 		} else {
 			throw new FileNotFoundException("Arquivo não encontrado");
 		}

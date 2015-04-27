@@ -48,9 +48,8 @@ public class AssuntoDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Noticia> getNoticiaAssuntoResolvendoLazy(int id_assunto) {
-		String stmt = "SELECT DISTINCT n FROM noticias n"
+		String stmt = "SELECT DISTINCT n FROM noticia n"
 				+ " WHERE n.idAssunto = :id";
-		System.out.println(stmt);
 		Query query = em.createQuery(stmt);
 		query.setParameter("id", id_assunto);
 		return (List<Noticia>) query.getResultList();

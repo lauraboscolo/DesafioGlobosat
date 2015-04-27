@@ -5,27 +5,20 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import com.google.gson.Gson;
 
 public class Gerenciadora {
 	
-	private AssuntoDao assuntos;
-	private PerfilDao perfis;
+	private AssuntoDao assuntoDao;
+	private PerfilDao perfilDao;
 	
 	private EntityManager em;
 	private EntityManagerFactory emf;
 
-	public Gerenciadora() {
-		
-		// Para fazer acesso ao banco
-		emf = Persistence.createEntityManagerFactory("globosat");
-		em = emf.createEntityManager();
-		
-		this.assuntos = new AssuntoDao(em);
-		this.perfis   = new PerfilDao(em);
-		new NoticiaDao(em);
+	public Gerenciadora(EntityManager em) {
+		this.assuntoDao = new AssuntoDao(em);
+		this.perfilDao   = new PerfilDao(em);
 	}
 	
 	/**
@@ -35,18 +28,15 @@ public class Gerenciadora {
 	 * @return Array de JSon com notícias, em forma de String
 	 */
 	public String getNoticiasPersonalizadas(int idPerfil){
-		// Descobre os assuntos desejados para o perfil
-		List<Assunto> assuntosDePerfil;
-		assuntosDePerfil = perfis.getPerfilAssuntoResolvendoLazy(idPerfil).getAssuntos();
+		List<Acesso> assuntosDePerfil;
+		assuntosDePerfil = perfilDao.getPerfilAssuntoResolvendoLazy(idPerfil).getPerfilAssunto();
 		
 		List<Noticia> noticias = new ArrayList<Noticia>();
 		// Pega todas as notícias dos assuntos da lista 'assuntosDePerfil'
-		for (Assunto adp : assuntosDePerfil){
-			List<Noticia> noticiasDoAssunto = assuntos.getNoticiaAssuntoResolvendoLazy(adp.getIdAssunto());
+		for (Acesso perfilAssunto : assuntosDePerfil){
+			List<Noticia> noticiasDoAssunto = assuntoDao.getNoticiaAssuntoResolvendoLazy(perfilAssunto.getAssunto());
 			
-			for (Noticia n : noticiasDoAssunto){
-				noticias.add(n);
-			}
+			noticias.addAll(noticiasDoAssunto);
 		}
 		
 		return gerarJsonDeNoticias(noticias);

@@ -7,10 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity(name="noticias")
+@Entity(name="noticia")
 public class Noticia implements java.io.Serializable {
-
-	private static final long serialVersionUID = 7772366447603193317L;
+	private static final long serialVersionUID = 1L;
 
 	// Campos da Tabela
 	@Id

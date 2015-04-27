@@ -1,17 +1,18 @@
 package br.com.dextra.database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-@Entity(name = "perfis")
+@Entity(name = "perfil")
+@Embeddable
 public class Perfil implements java.io.Serializable {
 
 	private static final long serialVersionUID = -9064070611033978682L;
@@ -24,19 +25,21 @@ public class Perfil implements java.io.Serializable {
 	@Column(nullable = false, name = "nome")
 	private String nome;
 
-	@ManyToMany
-	@JoinTable(name = "perfis_assuntos",
-	joinColumns = { @JoinColumn(name = "id_perfil") },
-	inverseJoinColumns = { @JoinColumn(name = "id_assunto") })
-	private List<Assunto> assuntos;
+	@OneToMany(targetEntity = Acesso.class)
+	private List<Acesso> perfilAcessos;
 
-	public Perfil() {
-		this(-1, "");
+	@SuppressWarnings("unused")
+	private Perfil(int id, String nome) {
+		this.id = id;
+		this.nome = nome;
+		this.perfilAcessos = new ArrayList<Acesso>();
 	}
 	
-	public Perfil(int id,String descricao) {
-		this.id = id;
+	public Perfil() {}
+
+	public Perfil( String descricao, List<Acesso> perfilAssuntos) {
 		this.nome = descricao;
+		this.perfilAcessos = perfilAssuntos;
 	}
 
 	public String getDescricao() {
@@ -47,16 +50,20 @@ public class Perfil implements java.io.Serializable {
 		this.nome = descricao;
 	}
 
-	public List<Assunto> getAssuntos() {
-		return assuntos;
+	public List<Acesso> getPerfilAssunto() {
+		return perfilAcessos;
 	}
 
-	public void setAssuntos(List<Assunto> assuntos) {
-		this.assuntos = assuntos;
+	public void setPerfilAssunto(List<Acesso> assuntos) {
+		this.perfilAcessos = assuntos;
 	}
 
 	public int getId() {
 		return id;
 	}
 
+	@SuppressWarnings("unused")
+	private void setId(int id) {
+		this.id = id;
+	}
 }

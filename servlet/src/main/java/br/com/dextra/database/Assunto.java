@@ -1,12 +1,14 @@
 package br.com.dextra.database;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="assuntos")
+@Entity(name="assunto")
+@Embeddable
 public class Assunto implements java.io.Serializable {
 	
 	private static final long serialVersionUID = -5304231939338469956L;
@@ -20,14 +22,11 @@ public class Assunto implements java.io.Serializable {
 	private String assunto;
 	
 	public Assunto() {
-		this.assunto="";
-		this.idAssunto=-1;
 	}
 	public Assunto(String assunto){
 		if (assunto.isEmpty() || assunto == null)
 			throw new IllegalArgumentException("Campo Assunto Vazio");
 		this.assunto = assunto;
-		this.idAssunto = -1;
 	}
 
 	public int getIdAssunto() {

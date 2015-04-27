@@ -5,6 +5,8 @@
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/globosat/NoticiasServlet.java
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Perfil.java
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/PerfilDao.java
+/home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/AcessoDao.java
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/WEKA/PD.java
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Usuario.java
+/home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Acesso.java
 /home/bruno/projetos/DesafioGlobosat/servlet/src/main/java/br/com/dextra/database/Noticia.java

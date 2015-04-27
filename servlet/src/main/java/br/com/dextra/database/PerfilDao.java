@@ -1,5 +1,7 @@
 package br.com.dextra.database;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -11,8 +13,8 @@ public class PerfilDao {
 		this.em = em;
 	}
 
-	public boolean addPerfil(int perfil,String descricao) {
-		Perfil _perfil = new Perfil(perfil, descricao);
+	public boolean addPerfil(String descricao, List<Acesso> perfilAssuntos) {
+		Perfil _perfil = new Perfil(descricao, perfilAssuntos);
 
 		// Abre a conexão com o Banco, insere um dado persistente
 		em.getTransaction().begin();
@@ -34,7 +36,7 @@ public class PerfilDao {
 	}
 
 	public Perfil getPerfilAssuntoResolvendoLazy(int id_perfil) {
-		String stmt = "SELECT DISTINCT p FROM perfis p"
+		String stmt = "SELECT DISTINCT p FROM perfil p"
 				+ " WHERE p.id = :id";
 		System.out.println(stmt);
 		Query query = em.createQuery(stmt);

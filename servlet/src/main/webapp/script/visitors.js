@@ -25,9 +25,9 @@ function visitor() {
 	var p = next();
 	console.info("data: p"+JSON.stringify(p));
 	$.post("noticias", {caracteristicas: JSON.stringify(p)}, function(data) {
-		console.info(data);
 		$.get("pages/templatenoticia.html", function(template){
 			for (index = 0; index < data.length; ++index) {
+				console.info(index);
 					$(".noticias").append(
 							doT.template(template)(data[index]));
 					
