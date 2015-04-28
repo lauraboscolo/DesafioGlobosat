@@ -50,15 +50,20 @@ public class AcessoDao {
 		String stmt = "SELECT DISTINCT a FROM acesso a"
 				+ " WHERE a.perfil = :idPerfil AND a.assunto = :idAssunto";
 		Query query = em.createQuery(stmt);
-		query.setParameter("idPerfil", idAssunto);
-		query.setParameter("idAssunto", idPerfil);
+		query.setParameter("idPerfil", idPerfil);
+		query.setParameter("idAssunto", idAssunto);
 		return (Acesso) query.getSingleResult();
 	}
 
 	public Acesso adicionarAcesso(int idAssunto,int idPerfil) {
+		em.getTransaction().begin();
+		
 		Acesso acesso = getAcessoPorAssuntoEPerfil(idAssunto, idPerfil);
-		acesso.getQtdAcesso().add(BigDecimal.ONE);
-		return em.merge(acesso);
+		acesso.setQtdAcesso(acesso.getQtdAcesso().add(BigDecimal.ONE));
+		acesso = em.merge(acesso);
+		
+		em.getTransaction().commit();
+		return acesso;
 	}
 
 }

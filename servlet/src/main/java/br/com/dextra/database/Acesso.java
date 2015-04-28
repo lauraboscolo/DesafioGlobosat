@@ -17,7 +17,7 @@ public class Acesso implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, name="perfil")
 	private int perfil;
 	
 	@Column(nullable = false , name="assunto")
@@ -30,7 +30,6 @@ public class Acesso implements Serializable{
 		this.perfil = p;
 		this.assunto = a;
 		this.qtdAcesso = qtdAcessos;
-		
 	}
 	
 	public Acesso() {

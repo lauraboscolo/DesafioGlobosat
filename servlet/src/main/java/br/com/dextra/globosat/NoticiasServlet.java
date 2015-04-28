@@ -49,11 +49,10 @@ public class NoticiasServlet extends HttpServlet {
 		}
 	}
 
-	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		PrintWriter writer = resp.getWriter();
-		Integer idAsusnto = Integer.parseInt(req.getParameter("caracteristicas"));
+		Integer idAsusnto = Integer.parseInt(req.getParameter("idAssunto"));
 		String caracteristicas = req.getParameter("caracteristicas").toString();
 		AcessoDao acessoDao = new AcessoDao(em);
 		
@@ -79,10 +78,10 @@ public class NoticiasServlet extends HttpServlet {
 		try {
 			double indexClassi = -1;
 			indexClassi = classificarUsuario(caracteristicas);
-			System.out.println("Cliassificador :" + indexClassi);
+			
 			Gerenciadora ger = new Gerenciadora(em);
 			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
-			System.out.println("RETORNO :" + jsonRetorno);
+
 			writer.println(jsonRetorno);
 			writer.flush();
 		} catch (Exception e) {
@@ -92,6 +91,7 @@ public class NoticiasServlet extends HttpServlet {
 		}
 	}
 
+	
 	private double classificarUsuario(String caracteristicas) throws Exception {
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
