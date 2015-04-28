@@ -16,37 +16,37 @@ public class Noticia implements java.io.Serializable {
 	@Column(nullable=false,name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idNoticia;
-	
+
 	@Column(nullable=false,name="id_assunto")
 	private int idAssunto;
 
 	@Column(nullable=false,name="link")
 	private String link;
-	
-	@Column(nullable=false,name="noticia")
-	private String noticia;
-	
+
+	@Column(nullable=false,name="titulo")
+	private String titulo;
+
 	public Noticia() {
 		this.idAssunto = -1;
-		this.noticia = "";
+		this.titulo = "";
 		this.link = "";
 	}
-	
-	public Noticia(int idAssunto,String link,String noticia){
+
+	public Noticia(int idAssunto,String link,String titulo){
 		if (idAssunto < 0 )
 			throw new IllegalArgumentException("Campo 'idAssunto' é menor do que 0");
-			
-		if (noticia.isEmpty() || noticia == null)
-			throw new IllegalArgumentException("Campo 'noticia' está vazio.");
-		
+
+		if (titulo.isEmpty() || titulo == null)
+			throw new IllegalArgumentException("Campo 'titulo' está vazio.");
+
 		if (link.isEmpty() || link == null)
 			throw new IllegalArgumentException("Campo 'link' está vazio.");
-		
+
 		this.idAssunto = idAssunto;
-		this.noticia = noticia;
+		this.titulo = titulo;
 		this.link = link;
 	}
-	
+
 	public int getIdNoticia() {
 		return idNoticia;
 	}
@@ -61,14 +61,14 @@ public class Noticia implements java.io.Serializable {
 		this.idAssunto = idAssunto;
 	}
 
-	public String getNoticia() {
-		return noticia;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNoticia(String noticia) {
-		if (noticia.isEmpty() || noticia == null)
-			throw new IllegalArgumentException("Campo 'noticia' está vazio.");
-		this.noticia = noticia;
+	public void setTitulo(String titulo) {
+		if (titulo.isEmpty() || titulo == null)
+			throw new IllegalArgumentException("Campo 'titulo' está vazio.");
+		this.titulo = titulo;
 	}
 
 	public String getLink() {

@@ -16,27 +16,27 @@ public class Acesso implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(nullable = false, name="perfil")
-	private int perfil;
-	
+
+	@Column(nullable = false, name="idUsuario")
+	private int idUsuario;
+
 	@Column(nullable = false , name="assunto")
 	private int assunto;
-	
+
 	@Column(nullable = false, name="qtdAcesso")
 	private BigDecimal qtdAcesso;
 
 	public Acesso(int p, int a, BigDecimal qtdAcessos){
-		this.perfil = p;
+		this.idUsuario = p;
 		this.assunto = a;
 		this.qtdAcesso = qtdAcessos;
 	}
-	
+
 	public Acesso() {
 	}
 
 	public int getPerfil() {
-		return perfil;
+		return idUsuario;
 	}
 
 	public int getAssunto() {
@@ -55,8 +55,8 @@ public class Acesso implements Serializable{
 		this.id = id;
 	}
 
-	public void setPerfil(int perfil) {
-		this.perfil = perfil;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public void setAssunto(int assunto) {

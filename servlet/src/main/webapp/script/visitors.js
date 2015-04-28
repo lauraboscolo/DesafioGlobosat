@@ -23,26 +23,26 @@ var array = [
 
 function visitor() {
 	var p = next();
-	$.post("noticias", {caracteristicas: JSON.stringify(p)}, function(data) {
+	$.get("noticias", function(data) {
 		$.get("pages/templatenoticia.html", function(template){
 			for (index = 0; index < data.length; ++index) {
 					$(".noticias").append(
 							doT.template(template)(data[index]));
 			}
-			
+
 			$('.linkNoticia').unbind('click').click(function(){
+				var idAssunto = $(this).data('assunto');
 				$.ajax({
 					  method: "PUT",
 					  url: "noticias",
-					  data: {idAssunto : $('.linkNoticia').data('assunto') ,
-						   	 caracteristicas : JSON.stringify(p) }
+					  data: {idAssunto :  idAssunto }
 					});
 			});
 		}, "html");
-		
+
 	},"json");
-	
-	
+
+
 }
 
 function next() {

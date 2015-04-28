@@ -1,60 +1,50 @@
 package br.com.dextra.database;
 
-public class Usuario {
+import java.math.BigDecimal;
 
-	private String lema;
-	private double participacao;
-	private double idade;
-	private String carreira;
-	private String classe;
-	private String perfil;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	public String getLema() {
-		return lema;
+@Entity(name = "usuario")
+@Embeddable
+public class Usuario implements java.io.Serializable {
+
+	private static final long serialVersionUID = -9064070611033978682L;
+
+	@Id
+	@Column(nullable = false, name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(nullable = false, name = "qtosUsuarios")
+	private BigDecimal qtosUsuarios;
+
+	@SuppressWarnings("unused")
+	private Usuario(int id, BigDecimal qtosUsuarios) {
+		this.id = id;
+		this.setQtosUsuarios(qtosUsuarios);
 	}
 
-	public void setLema(String lema) {
-		this.lema = lema;
+	public Usuario() {}
+
+	public int getId() {
+		return id;
 	}
 
-	public double getParticipacao() {
-		return participacao;
+	@SuppressWarnings("unused")
+	private void setId(int id) {
+		this.id = id;
 	}
 
-	public void setParticipacao(double participacao) {
-		this.participacao = participacao;
+	public BigDecimal getQtosUsuarios() {
+		return qtosUsuarios;
 	}
 
-	public double getIdade() {
-		return idade;
+	public void setQtosUsuarios(BigDecimal qtosUsuarios) {
+		this.qtosUsuarios = qtosUsuarios;
 	}
-
-	public void setIdade(double idade) {
-		this.idade = idade;
-	}
-
-	public String getCarreira() {
-		return carreira;
-	}
-
-	public void setCarreira(String carreira) {
-		this.carreira = carreira;
-	}
-
-	public String getClasse() {
-		return classe;
-	}
-
-	public void setClasse(String classe) {
-		this.classe = classe;
-	}
-
-	public String getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
-	}
-
 }
