@@ -30,6 +30,7 @@ public class Acesso implements Serializable{
 		this.perfil = p;
 		this.assunto = a;
 		this.qtdAcesso = qtdAcessos;
+		
 	}
 	
 	public Acesso() {

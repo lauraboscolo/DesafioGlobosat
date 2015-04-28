@@ -36,7 +36,7 @@ function visitor() {
 			}
 			
 			$('.linkNoticia').unbind('click').click(function(){
-				$.put("noticias", {idAssunto : $($('.linkNoticia').data('assunto'))},function(){});
+				$.put("noticias", {idAssunto : $('.linkNoticia').data('assunto') },function(){});
 			});
 		}, "html");
 		
