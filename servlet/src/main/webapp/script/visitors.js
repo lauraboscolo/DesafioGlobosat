@@ -23,20 +23,20 @@ var array = [
 
 function visitor() {
 	var p = next();
-	console.info("data: p"+JSON.stringify(p));
 	$.post("noticias", {caracteristicas: JSON.stringify(p)}, function(data) {
 		$.get("pages/templatenoticia.html", function(template){
 			for (index = 0; index < data.length; ++index) {
-				console.info(index);
 					$(".noticias").append(
 							doT.template(template)(data[index]));
-					
-					console.info("data: "+data[index]);
-					console.info("template: "+template);
 			}
 			
 			$('.linkNoticia').unbind('click').click(function(){
-				$.put("noticias", {idAssunto : $('.linkNoticia').data('assunto') },function(){});
+				$.ajax({
+					  method: "PUT",
+					  url: "noticias",
+					  data: {idAssunto : $('.linkNoticia').data('assunto') ,
+						   	 caracteristicas : JSON.stringify(p) }
+					});
 			});
 		}, "html");
 		
