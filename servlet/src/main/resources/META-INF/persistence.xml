@@ -9,11 +9,11 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5433/desafio_globosat" />
+				value="jdbc:postgresql://dbserver:5443/desafio_globosat" />
 			<property name="javax.persistence.jdbc.user" value="desafio_globosat" />
 			<property name="javax.persistence.jdbc.password" value="desafio321" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<!-- <property name="javax.persistence.jdbc.driver" value="com.postgresql.jdbc.Driver" 
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.postgresql.jdbc.Driver"
 				/> -->
 
 			<property name="hibernate.show_sql" value="true" />

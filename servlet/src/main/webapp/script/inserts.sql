@@ -12,24 +12,20 @@ INSERT INTO assunto(id, assunto) values(6, 'CARROS');
 INSERT INTO assunto(id, assunto) values(7, 'VIAGENS');
 INSERT INTO assunto(id, assunto) values(8, 'EDUCACAO');
 
-/*
-
-INSERT INTO acesso(id, perfil, assunto) values(1, 1, 1);
-INSERT INTO acesso(id, perfil, assunto) values(2, 1, 7);
-INSERT INTO acesso(id, perfil, assunto) values(4, 2, 1);
-INSERT INTO acesso(id, perfil, assunto) values(5, 2, 3);
-INSERT INTO acesso(id, perfil, assunto) values(6, 2, 5);
-INSERT INTO acesso(id, perfil, assunto) values(7, 2, 6);
-INSERT INTO acesso(id, perfil, assunto) values(8, 2, 7);
-INSERT INTO acesso(id, perfil, assunto) values(9, 3, 2);
-INSERT INTO acesso(id, perfil, assunto) values(10, 3, 4);
-INSERT INTO acesso(id, perfil, assunto) values(11, 3, 7);
-INSERT INTO acesso(id, perfil, assunto) values(12, 4, 5);
-INSERT INTO acesso(id, perfil, assunto) values(13, 4, 7);
-INSERT INTO acesso(id, perfil, assunto) values(14, 4, 8); 
-
-*/
-
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(1, 1, 1, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(2, 1, 7, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(3, 1, 2, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(4, 2, 1, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(5, 2, 3, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(6, 2, 5, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(7, 2, 6, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(8, 2, 7, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(9, 3, 2, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(10, 3, 4, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(11, 3, 7, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(12, 4, 5, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(13, 4, 7, 0);
+INSERT INTO acesso(id, perfil, assunto, qtdacesso) values(14, 4, 8, 0);
 
 INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(1, 1, 'Nova patente do Google torna navegação privada automática na web', 'http://www.techtudo.com.br/noticia/noticia/2015/01/nova-patente-do-google-torna-navegacao-privada-automatica-no-chrome.html');
 INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(2, 1, 'Gmail lança função soneca para que e-mails chatos não acordem usuários', 'http://www.techtudo.com.br/noticia/noticia/2015/01/gmail-lanca-funcao-soneca-no-inbox.html');
@@ -65,3 +61,17 @@ INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(31, 7, 'Veja dicas par
 INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(32, 8, 'Estudantes nota 1.000 na redação do Enem revelam o segredo do sucesso', 'http://g1.globo.com/educacao/enem/2014/noticia/2015/01/estudantes-nota-1000-na-redacao-do-enem-revelam-o-segredo-do-sucesso.html');
 INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(33, 8, 'Detentos de Pernambuco e Ceará terão de refazer o Enem', 'http://g1.globo.com/educacao/enem/2014/noticia/2015/01/detentos-do-pernambuco-e-ceara-terao-de-refazer-o-enem.html');
 INSERT INTO noticia(id, id_assunto, noticia, link) VALUES(34, 8, 'Mais de 200 mil redações do Enem foram canceladas por fuga ao tema', 'http://g1.globo.com/educacao/enem/2014/noticia/2015/01/mais-de-200-mil-redacoes-do-enem-foram-canceladas-por-fuga-ao-tema.html');
+
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (1,1);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (1,2);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (2,1);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (2,3);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (2,5);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (2,6);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (2,7);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (3,2);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (3,4);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (3,7);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (4,5);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (4,7);
+INSERT INTO perfil_acesso(perfil_id,perfilacessos_id) values (4,8);

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity(name = "perfil")
 @Embeddable
@@ -25,7 +25,7 @@ public class Perfil implements java.io.Serializable {
 	@Column(nullable = false, name = "nome")
 	private String nome;
 
-	@OneToMany(targetEntity = Acesso.class)
+	@ManyToMany(targetEntity = Acesso.class)
 	private List<Acesso> perfilAcessos;
 
 	@SuppressWarnings("unused")
@@ -34,7 +34,7 @@ public class Perfil implements java.io.Serializable {
 		this.nome = nome;
 		this.perfilAcessos = new ArrayList<Acesso>();
 	}
-	
+
 	public Perfil() {}
 
 	public Perfil( String descricao, List<Acesso> perfilAssuntos) {

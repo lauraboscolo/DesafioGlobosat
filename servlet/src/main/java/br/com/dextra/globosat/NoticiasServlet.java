@@ -29,6 +29,7 @@ import com.google.gson.JsonObject;
 public class NoticiasServlet extends HttpServlet {
 
 	private final String BIG_DATA_PATH = "src/main/resources/dados_treinamento.ARFF";
+	public static final String NOME_COOKIE = "usuario";
 
 	private PD pd;
 	private EntityManager em;
@@ -55,7 +56,7 @@ public class NoticiasServlet extends HttpServlet {
 		Integer idAsusnto = Integer.parseInt(req.getParameter("idAssunto"));
 		String caracteristicas = req.getParameter("caracteristicas").toString();
 		AcessoDao acessoDao = new AcessoDao(em);
-		
+
 		try {
 			acessoDao.adicionarAcesso(idAsusnto,
 					(int) classificarUsuario(caracteristicas));
@@ -78,7 +79,7 @@ public class NoticiasServlet extends HttpServlet {
 		try {
 			double indexClassi = -1;
 			indexClassi = classificarUsuario(caracteristicas);
-			
+
 			Gerenciadora ger = new Gerenciadora(em);
 			String jsonRetorno = ger.getNoticiasPersonalizadas((int) indexClassi);
 
@@ -91,7 +92,7 @@ public class NoticiasServlet extends HttpServlet {
 		}
 	}
 
-	
+
 	private double classificarUsuario(String caracteristicas) throws Exception {
 		Gson gson = new Gson();
 		JsonElement element = gson.fromJson(caracteristicas, JsonElement.class);
