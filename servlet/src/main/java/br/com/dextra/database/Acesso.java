@@ -35,7 +35,7 @@ public class Acesso implements Serializable{
 	public Acesso() {
 	}
 
-	public int getPerfil() {
+	public int getIdUsuario() {
 		return idUsuario;
 	}
 

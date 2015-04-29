@@ -1,6 +1,10 @@
 package br.com.dextra.database;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -71,4 +75,24 @@ public class AcessoDao {
 		return acesso;
 	}
 
+	public Map<Integer,List<Acesso>> getTodosAcessos(){
+		StringBuilder stmt = new StringBuilder();
+		stmt.append("FROM acesso order by qtdAcesso");
+		
+		Query query = em.createQuery(stmt.toString());
+		@SuppressWarnings("unchecked")
+		List<Acesso> result = query.getResultList();
+		
+		Map<Integer, List<Acesso>> map = new HashMap<>();
+		for (Acesso acesso : result) {
+			List<Acesso> list = map.get(acesso.getIdUsuario());
+			if (list == null) {
+				list = new ArrayList<>();
+				map.put(acesso.getIdUsuario(), list);
+			}
+			list.add(acesso);
+		}
+		return map;
+	}
+	
 }
