@@ -16,10 +16,10 @@ import br.com.dextra.database.AcessoDao;
 import br.com.dextra.database.Gerenciadora;
 import br.com.dextra.database.UsuarioDao;
 
+
 public class NoticiasServlet extends HttpServlet {
 
 	private final String USUARIO_COOKIE = "IdUsuario";
-
 
 	private EntityManager em;
 	private EntityManagerFactory emf;
@@ -29,6 +29,7 @@ public class NoticiasServlet extends HttpServlet {
 	public void init() throws ServletException {
 		emf = Persistence.createEntityManagerFactory("globosat");
 		em = emf.createEntityManager();
+		
 	}
 
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
